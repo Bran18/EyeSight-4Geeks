@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 
 module.exports = {
+
   entry: [
     './src/front/js/index.js'
   ],
@@ -24,7 +25,8 @@ module.exports = {
               loader: "style-loader" // creates style nodes from JS strings
           }, {
               loader: "css-loader" // translates CSS into CommonJS
-          }, {
+          },
+           {
               loader: "sass-loader" // compiles Sass to CSS
           }]
         }, //css only files

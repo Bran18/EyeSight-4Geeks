@@ -11,13 +11,6 @@ import datetime
 api = Blueprint('api', __name__)
 
 
-# @api.route('/hello', methods=['POST', 'GET'])
-# def handle_hello():
-
-#     response_body = {
-#         "message": "Hello! I'm a message that came from the backend"
-#     }
-
 @api.route('/hello', methods=['POST', 'GET'])
 def handle_hello():
     users = User.query.all()
@@ -33,9 +26,9 @@ def handle_hello():
 def handle_hash():
     
     expiracion = datetime.timedelta(days=3)
-    access_token = create_access_token(identity='mortega@4geeks.co', expires_delta=expiracion)
+    access_token = create_access_token(identity='bfernandez@gmail.com', expires_delta=expiracion)
     response_token = {
-        "users": "Manu",
+        "users": "Bran18",
         "token": access_token
     }
 
@@ -62,6 +55,7 @@ def login():
         "status": 401
         
         }), 401
+
     # if not check_password_hash(user.password, password):
     #      return jsonify({"msg": "The password is not correct",
     #     "status": 401
