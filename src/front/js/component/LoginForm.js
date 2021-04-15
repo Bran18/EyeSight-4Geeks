@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 const LoginForm = () => {
@@ -66,6 +67,10 @@ const LoginForm = () => {
 									{JSON.stringify(store.user.token)}
 								</div>
 							) : null}
+
+							<Link to="/register" className="btn btn-success">
+								Register!
+							</Link>
 						</form>
 					</div>
 				)}
