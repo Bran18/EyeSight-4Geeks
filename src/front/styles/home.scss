@@ -1,12 +1,16 @@
-.nav-logo{
-    width: 80px;
-    height: 80px;
+.nav{
+    font-family: 'Quicksand', sans-serif;
 }
+
+.nav-logo{
+    width: 50px;
+    height: 50px;
+}
+
 
 /* MARKETING CONTENT
 -------------------------------------------------- */
 
-/* Center align the text within the three columns below the carousel */
 .marketing .col-lg-4 {
   margin-bottom: 1.5rem;
   text-align: center;
@@ -63,14 +67,14 @@
   color: rgb(231, 162, 116);
   font-size: 100px;
   margin-top: -100px;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .hero-container > p {
   margin-top: 8px;
   color: rgb(126, 124, 124);
   font-size: 32px;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-    'Lucida Sans', Arial, sans-serif;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .card{
@@ -92,8 +96,8 @@
     padding: 45px 0;
      padding-top: 45px;
      padding-bottom: 45px;
-
      margin-bottom: 45px;
+     font-family: 'Quicksand', sans-serif;
 }
 
 /* RESPONSIVE CSS

@@ -4,7 +4,7 @@ import eyeSihtLogo from "../../img/EyeSight-4Geeks.png";
 
 export const Navbar = () => {
 	return (
-		<nav className="navbar navbar-expand-lg navbar-light bg-light">
+		<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
 			<Link to="/">
 				<span className="navbar-brand mb-0 h1">
 					<img src={eyeSihtLogo} className="nav-logo" alt="eyeSihtLogo" />
@@ -34,14 +34,14 @@ export const Navbar = () => {
 					</li>
 					<li className="nav-item">
 						<Link to="/">
-							<span className="nav-link">Pricing</span>
+							<span className="nav-link">About Us</span>
 						</Link>
 					</li>
 				</ul>
 			</div>
 			<div className="ml-auto">
 				<Link to="/login">
-					<button className="btn btn-primary">login</button>
+					<button className="btn btn-outline-info">login</button>
 				</Link>
 			</div>
 		</nav>

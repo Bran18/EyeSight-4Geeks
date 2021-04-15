@@ -1,5 +1,5 @@
 import React from "react";
-import imageTest from "../../img/Boxthinking.svg";
+import Boxthinking from "../../img/Box.png";
 
 const Feature = () => {
 	return (
@@ -14,7 +14,7 @@ const Feature = () => {
 					</p>
 				</div>
 				<div className="col-md-5">
-					<img src={imageTest} alt="ima" className="featurette-image img-fluid mx-auto" />
+					<img src={Boxthinking} alt="ima" className="featurette-image img-fluid mx-auto" />
 				</div>
 			</div>
 
@@ -29,7 +29,7 @@ const Feature = () => {
 					</p>
 				</div>
 				<div className="col-md-5 order-md-1">
-					<img src={imageTest} alt="ima" className="featurette-image img-fluid mx-auto" />
+					<img src={Boxthinking} alt="ima" className="featurette-image img-fluid mx-auto" />
 				</div>
 			</div>
 
@@ -45,7 +45,7 @@ const Feature = () => {
 					</p>
 				</div>
 				<div className="col-md-5">
-					<img src={imageTest} alt="ima" className="featurette-image img-fluid mx-auto" />
+					<img src={Boxthinking} alt="ima" className="featurette-image img-fluid mx-auto" />
 				</div>
 			</div>
 		</div>

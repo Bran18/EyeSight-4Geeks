@@ -1,5 +1,5 @@
 import React from "react";
-import CardImage from "../../img/Boxthinking.svg";
+import Boxthinking from "../../img/Box.png";
 
 const CardSection = () => {
 	return (
