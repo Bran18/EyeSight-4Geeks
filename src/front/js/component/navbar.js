@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
+
 import eyeSihtLogo from "../../img/EyeSight-4Geeks.png";
 
 export const Navbar = () => {
+	const { store, actions } = useContext(Context);
+
 	return (
-		<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+		<nav className="navbar navbar-expand-lg navbar-light bg-light">
 			<Link to="/">
 				<span className="navbar-brand mb-0 h1">
 					<img src={eyeSihtLogo} className="nav-logo" alt="eyeSihtLogo" />
@@ -39,10 +43,27 @@ export const Navbar = () => {
 					</li>
 				</ul>
 			</div>
-			<div className="ml-auto">
-				<Link to="/login">
-					<button className="btn btn-outline-info">login</button>
-				</Link>
+			<div className="btn-group" role="group">
+				<button
+					id="btnGroupDrop1"
+					type="button"
+					className="btn btn-outline-primary dropdown-toggle"
+					data-toggle="dropdown"
+					aria-haspopup="true"
+					aria-expanded="false">
+					Menu
+				</button>
+				<div className="dropdown-menu ml-auto" aria-labelledby="btnGroupDrop1">
+					<Link to="/register">
+						<span className="dropdown-item"> Register </span>
+					</Link>
+					<Link to="/login">
+						<span className="dropdown-item"> Login </span>
+					</Link>
+					<button onClick={() => actions.logout()} className="dropdown-item" href="#">
+						Logout
+					</button>
+				</div>
 			</div>
 		</nav>
 	);

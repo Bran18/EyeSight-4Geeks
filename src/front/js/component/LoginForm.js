@@ -27,17 +27,14 @@ const LoginForm = () => {
 					<div className="text-center mt-5">
 						{/* <span>User: {JSON.stringify(store.user)}</span> */}
 						<div className="card" style={{ width: "18rem" }}>
-							<img
-								className="card-img-top"
-								src="https://cdn.generadormemes.com/media/templates/xllama_fea.jpg.pagespeed.ic.plantilla-memes.jpg"
-							/>
+							<img className="card-img-top" src="" />
 							<div className="card-body">
 								<span>User: {JSON.stringify(store.user)}</span>
 							</div>
 						</div>
 					</div>
 				) : (
-					<div className="text-center mt-5">
+					<div className="text-center mx-auto mt-5">
 						<h1>Login with your credentials</h1>
 
 						<form>
@@ -59,16 +56,11 @@ const LoginForm = () => {
 									className="form-control"
 								/>
 							</div>
-							<button type="submit" onClick={e => handlerClick(e)} className="btn btn-primary">
+							<button type="submit" onClick={e => handlerClick(e)} className="btn btn-primary  mr-3 mb-3">
 								Submit
 							</button>
-							{store.user !== "" ? (
-								<div className="alert alert-info overflow-auto mt-5">
-									{JSON.stringify(store.user.token)}
-								</div>
-							) : null}
 
-							<Link to="/register" className="btn btn-success">
+							<Link to="/register" className="btn btn-outline-success mx-auto mr-3 mb-3">
 								Register!
 							</Link>
 						</form>

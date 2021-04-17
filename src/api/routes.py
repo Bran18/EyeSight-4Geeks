@@ -34,7 +34,33 @@ def handle_hash():
 
     return jsonify(response_token), 200
 
+@api.route('/register', methods=['POST'])
+def register_user():
+    email = request.json.get("email", None)
+    password = request.json.get("password", None)
+    username= request.json.get("username", None)
 
+    if email is None:
+        return jsonify({"msg": "No email was provided"}), 400
+    if password is None:
+        return jsonify({"msg": "No password was provided"}), 400
+    if username is None:
+        return jsonify({"msg": "No username was provided"}), 400
+    
+    user = User.query.filter_by(email=email,username=username, password=password).first()
+    if user:
+        # the user was not found on the database
+        return jsonify({"msg": "User already exists"}), 401
+    else:
+        new_user = User()
+        new_user.email = email
+        new_user.password = password
+        new_user.username= username
+
+        db.session.add(new_user)
+        db.session.commit()
+        return jsonify({"msg": "User created successfully"}), 200
+    
 @api.route('/login', methods=['POST'])
 def login():
     

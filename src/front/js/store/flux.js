@@ -7,11 +7,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 				username: "",
 				email: "",
 				userId: "",
-				userName: ""
+				userName: "",
+				isUserAuth: "false"
 			}
 		},
 
 		actions: {
+			removeUserToken: () => localStorage.removeItem("token"),
+			unsetUserAuth: () => setStore({ isUserAuth: false }),
+			setUserAuth: () => setStore({ isUserAuth: true }),
+
 			getToken: () => {
 				const tokenLocal = localStorage.getItem("token");
 				const userLocal = JSON.parse(localStorage.getItem("user"));
@@ -40,6 +45,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 					.then(resp => resp.json())
 					.then(data => {
+						getActions().setUserAuth();
 						console.log("--data--", data);
 						setStore({ user: data });
 
@@ -47,7 +53,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 							localStorage.setItem("token", data.token);
 							localStorage.setItem("user", JSON.stringify(data.user));
 						} else {
-							// LocalStorage no soportado en este navegador
 						}
 					})
 					.catch(error => console.log("Error loading message from backend", error));
@@ -58,26 +63,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(resp => resp.json())
 					.then(data => setStore({ message: data.message }))
 					.catch(error => console.log("Error loading message from backend", error));
+			},
+
+			logout: () => {
+				getActions().removeUserToken();
+				getActions().unsetUserAuth();
 			}
-
-			// Use getActions to call a function within a fuction
-			// exampleFunction: () => {
-			// 	getActions().changeColor(0, "green");
-			// },
-			// changeColor: (index, color) => {
-			// 	//get the store
-			// 	const store = getStore();
-
-			// 	//we have to loop the entire demo array to look for the respective index
-			// 	//and change its color
-			// 	const demo = store.demo.map((elm, i) => {
-			// 		if (i === index) elm.background = color;
-			// 		return elm;
-			// 	});
-
-			// 	//reset the global store
-			// 	setStore({ demo: demo });
-			// }
 		}
 	};
 };
