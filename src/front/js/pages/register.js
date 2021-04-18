@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { Redirect } from "react-router-dom";
 
@@ -8,35 +7,15 @@ export const Register = () => {
 	const [username, setUsername] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const [auth, setAuth] = useState(false);
 
 	const handleSubmit = e => {
 		e.preventDefault();
 
 		actions.setRegister({
 			email: email,
+			username: username,
 			password: password
 		});
-
-		const body = {
-			username: username,
-			email: email,
-			password: password
-		};
-
-		fetch("https://3001-copper-galliform-drf3ftok.ws-us03.gitpod.io/register", {
-			method: "POST",
-			body: JSON.stringify(body),
-			headers: {
-				"Content-Type": "application/json"
-			}
-		})
-			.then(res => res.json())
-			.then(data => {
-				console.log(data);
-				setAuth(true);
-			})
-			.catch(err => console.log(err));
 	};
 
 	return (
@@ -83,7 +62,6 @@ export const Register = () => {
 					Submit
 				</button>
 			</form>
-			{auth ? <Redirect to="/login" /> : null}
 		</div>
 	);
 };

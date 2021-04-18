@@ -34,7 +34,7 @@ def handle_hash():
 
     return jsonify(response_token), 200
 
-@api.route('/register', methods=['POST'])
+@api.route('/register/', methods=['POST'])
 def register_user():
     email = request.json.get("email", None)
     password = request.json.get("password", None)
@@ -49,7 +49,6 @@ def register_user():
     
     user = User.query.filter_by(email=email,username=username, password=password).first()
     if user:
-        # the user was not found on the database
         return jsonify({"msg": "User already exists"}), 401
     else:
         new_user = User()
@@ -61,7 +60,7 @@ def register_user():
         db.session.commit()
         return jsonify({"msg": "User created successfully"}), 200
     
-@api.route('/login', methods=['POST'])
+@api.route('/login/', methods=['POST'])
 def login():
     
     email = request.json.get("email", None)
@@ -82,12 +81,12 @@ def login():
         
         }), 401
 
-    # if not check_password_hash(user.password, password):
-    #      return jsonify({"msg": "The password is not correct",
-    #     "status": 401
-    #     }), 400
+    if not check_password_hash(user.password, password):
+          return jsonify({"msg": "The password is not correct",
+        "status": 401
+             }), 400
 
-    expiracion = datetime.timedelta(days=3)
+    expiracion = datetime.timedelta(days=1)
     access_token = create_access_token(identity=user.email, expires_delta=expiracion)
 
     data = {
@@ -100,43 +99,11 @@ def login():
 
 
     return jsonify(data), 200
+@api.route('/logout/')
+def logout():
+    # Removing data from session by setting logged_flag to False.
+    access_token = None
+    # redirecting to home page
+    return jsonify(response_token), 200
 
 
-@api.route('/register', methods=['POST'])
-def register():
- if request.method == 'POST':
-    email = request.json.get("email", None)
-    password = request.json.get("password", None)
-    username = request.json.get("username", None)
-    
-    if not email:
-        return "Email required", 401
-    username = request.json.get("username", None)
-    if not username:
-        return "Username required", 401
-    password = request.json.get("password", None)
-    if not password:
-        return "Password required", 401
-
-    email_query = User.query.filter_by(email=email).first()
-    if email_query:
-        return "This email has been already taken", 401
-    
-    user = User()
-    user.email = email
-    # user.is_active= True
-    user.username = username
-    hashed_password = generate_password_hash(password)
-    user.password = hashed_password
-    print(user)
-    db.session.add(user)
-    db.session.commit()
-
-    response = {
-        "msg": "Added successfully",
-        "username": username
-    }
-    return jsonify(response), 200
-
-
-    return jsonify(response_body), 200
