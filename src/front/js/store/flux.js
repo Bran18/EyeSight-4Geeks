@@ -2,13 +2,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			user: {
-				expires: "",
-				token: "",
 				username: "",
 				email: "",
 				userId: "",
 				userName: "",
-				isUserAuth: "false"
+				userUrl: ""
 			}
 		},
 

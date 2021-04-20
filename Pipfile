@@ -18,6 +18,8 @@ gunicorn = "*"
 cloudinary = "*"
 flask-admin = "*"
 flask-jwt-extended = "*"
+clarifai-grpc = "*"
+basicauth = "*"
 
 [requires]
 python_version = "3.8"

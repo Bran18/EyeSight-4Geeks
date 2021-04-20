@@ -4,9 +4,11 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 from flask import Flask, request, jsonify, url_for, Blueprint
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity 
 import re
-#from basicauth import decode
+from basicauth import decode
 from api.models import db, User
 from api.utils import generate_sitemap, APIException
+#importin external_api funtion
+from api.external_api import request_call_integration
 
 api = Blueprint('api', __name__)
 
@@ -20,13 +22,14 @@ def handle_hello():
 
     return jsonify(response_body), 200
 
+#Calling the API external request
+@api.route('/external', methods=["GET"])
+def set_url():
+    user_url='https://ep01.epimg.net/elviajero/imagenes/2019/12/06/album/1575647129_239693_1575651292_noticia_normal_recorte1.jpg'
+    results= request_call_integration(user_url)
+    return jsonify(results),200
+
 # adding new tested routes
-
-@api.route('/user/<id>', methods=['DELETE'])
-def delete_User(id):
-  db.delete_one({'_id': ObjectId(id)})
-  return jsonify({'message': 'User Deleted'})
-
 @api.route('/user', methods=["GET"])
 def get_user ():
     user = User.query.all()
@@ -38,7 +41,7 @@ def get_user ():
 def set_login():
     headers = request.headers
     AuthHeader = headers['Authorization']
-    #username, password = decode(AuthHeader)
+    username, password = decode(AuthHeader)
     #Validating if the user is created
     user= User.query.filter_by(email=email, password=password).first()
     if user is None:
@@ -70,7 +73,6 @@ def EmailValidation(id):
 
 @api.route('/forgotPassword/<string:id>', methods=["GET"])
 def ForgotPassword (id):
-    
     regex = '^(\w|\.|\_|\-)+[@](\w|\_|\-|\.)+[.]\w{2,3}$'
     if(re.search(regex, id)):
       
@@ -84,3 +86,12 @@ def ForgotPassword (id):
     
     else:
         return jsonify({"msg": "Wrong Email"}),411
+
+#Delete route
+@api.route('/user/<id>', methods=['DELETE'])
+def delete_User(id):
+  db.delete_one({'_id': ObjectId(id)})
+  return jsonify({'message': 'User Deleted'})
+
+
+    

@@ -10,6 +10,7 @@ class User(db.Model):
     lastname = db.Column(db.String(120), unique=False, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
+    url=db.Column(db.String(280), unique=False)
     is_Active = db.Column(db.Boolean(), unique=False, nullable=False)
 
     def __init__(self, username, firstname, lastName, email, password):
@@ -18,6 +19,7 @@ class User(db.Model):
         self.lastname = lastName,
         self.email = email,
         self.password = password,
+        self.url = url,
         self.is_Active = True
 
     def __repr__(self):
