@@ -17,7 +17,7 @@ ENV = os.getenv("FLASK_ENV")
 static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../public/')
 app = Flask(__name__)
 app.url_map.strict_slashes = False
-jwt = JWTManager(app)
+
 
 # database condiguration
 if os.getenv("DATABASE_URL") is not None:
@@ -25,6 +25,9 @@ if os.getenv("DATABASE_URL") is not None:
 else:
     app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////tmp/test.db"
 
+#adding JWT and our secret
+app.config["JWT_SECRET_KEY"] = "4GeeksEsightApp"
+jwt = JWTManager(app)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 MIGRATE = Migrate(app, db)
 db.init_app(app)

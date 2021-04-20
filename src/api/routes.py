@@ -2,141 +2,96 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity 
+import re
+from basicauth import decode
 from api.models import db, User
 from api.utils import generate_sitemap, APIException
-from werkzeug.security import generate_password_hash, check_password_hash       ## Nos permite manejar tokens por authentication (usuarios)    
-from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity   #from models import Person
-import datetime
+#importin external_api funtion
+from api.external_api import request_call_integration
 
 api = Blueprint('api', __name__)
 
 
 @api.route('/hello', methods=['POST', 'GET'])
 def handle_hello():
-    users = User.query.all()
-    users = list(map(lambda x: x.serialize(), users))
+
     response_body = {
-        "users": users
+        "message": "Hello! I'm a message that came from the backend"
     }
 
     return jsonify(response_body), 200
 
+#Calling the API external request
+@api.route('/external', methods=["GET"])
+def set_url():
+    user_url='https://ep01.epimg.net/elviajero/imagenes/2019/12/06/album/1575647129_239693_1575651292_noticia_normal_recorte1.jpg'
+    results= request_call_integration(user_url)
+    return jsonify(results),200
 
-@api.route('/hash', methods=['POST', 'GET'])
-def handle_hash():
-    
-    expiracion = datetime.timedelta(days=3)
-    access_token = create_access_token(identity='bfernandez@gmail.com', expires_delta=expiracion)
-    response_token = {
-        "users": "Bran18",
-        "token": access_token
-    }
+# adding new tested routes
+@api.route('/user', methods=["GET"])
+def get_user ():
+    user = User.query.all()
+    result = [user.serialize() for user in User.query.all()]
+    return jsonify(result),200
 
-    return jsonify(response_token), 200
+#adding login route
+@api.route('/login', methods=["GET"])
+def set_login():
+    headers = request.headers
+    AuthHeader = headers['Authorization']
+    username, password = decode(AuthHeader)
+    #Validating if the user is created
+    user= User.query.filter_by(email=email, password=password).first()
+    if user is None:
+        return jsonify({"msg": "Wrong password or email"}), 401
+    #Token creation
+    access_token = create_access_token(identity=user.id)
+    return jsonify({ "token": access_token, "user_id": user.id}), 200
 
-@api.route('/register', methods=['POST'])
-def register_user():
-    email = request.json.get("email", None)
-    password = request.json.get("password", None)
-    username= request.json.get("username", None)
-
-    if email is None:
-        return jsonify({"msg": "No email was provided"}), 400
-    if password is None:
-        return jsonify({"msg": "No password was provided"}), 400
-    if username is None:
-        return jsonify({"msg": "No username was provided"}), 400
-    
-    user = User.query.filter_by(email=email,username=username, password=password).first()
-    if user:
-        # the user was not found on the database
-        return jsonify({"msg": "User already exists"}), 401
-    else:
-        new_user = User()
-        new_user.email = email
-        new_user.password = password
-        new_user.username= username
-
-        db.session.add(new_user)
-        db.session.commit()
-        return jsonify({"msg": "User created successfully"}), 200
-    
-@api.route('/login', methods=['POST'])
-def login():
-    
-    email = request.json.get("email", None)
-    password = request.json.get("password", None)
-
-    if not email:
-        return jsonify({"msg":"Email required"}), 400
-
-    if not password:
-        return jsonify({"msg":"Password required"}), 400
-    
-    user = User.query.filter_by(email=email).first()
-    print(user)
-
-    if not user:
-        return jsonify({"msg": "The email is not correct",
-        "status": 401
-        
-        }), 401
-
-    # if not check_password_hash(user.password, password):
-    #      return jsonify({"msg": "The password is not correct",
-    #     "status": 401
-    #     }), 400
-
-    expiracion = datetime.timedelta(days=3)
-    access_token = create_access_token(identity=user.email, expires_delta=expiracion)
-
-    data = {
-        "user": user.serialize(),
-        "token": access_token,
-        "expires": expiracion.total_seconds()*1000,
-        "userId": user.id,
-        "username": user.username
-    }
-
-
-    return jsonify(data), 200
-
-
-@api.route('/register', methods=['POST'])
-def register():
- if request.method == 'POST':
-    email = request.json.get("email", None)
-    password = request.json.get("password", None)
-    username = request.json.get("username", None)
-    
-    if not email:
-        return "Email required", 401
-    username = request.json.get("username", None)
-    if not username:
-        return "Username required", 401
-    password = request.json.get("password", None)
-    if not password:
-        return "Password required", 401
-
-    email_query = User.query.filter_by(email=email).first()
-    if email_query:
-        return "This email has been already taken", 401
-    
-    user = User()
-    user.email = email
-    # user.is_active= True
-    user.username = username
-    hashed_password = generate_password_hash(password)
-    user.password = hashed_password
-    print(user)
+#creating register route
+@api.route('/register', methods=["POST"])
+def set_register():
+    data= request.get_json()
+    user= User(data["name"],data["lastname"],data["email"],data["password"])
     db.session.add(user)
     db.session.commit()
+    return jsonify("msg: User created successfully"),200
+    return jsonify(request_body),200
 
-    response = {
-        "msg": "Added successfully",
-        "username": username
-    }
-    return jsonify(response), 200
+@api.route('/emailValidation/<string:id>', methods=["GET"])
+def EmailValidation(id):
+    regex = '^(\w|\.|\_|\-)+[@](\w|\_|\-|\.)+[.]\w{2,3}$'
+    if(re.search(regex, id)):
+        user = User.query.filter_by(email=id, is_Active=True).first()
+        if user is None:
+            return jsonify({"msg": "Your email is valid"}),200
+        return jsonify({"msg": "Email already taken"}), 406
+    else:
+        return jsonify({"msg":"Invalid email"}),411
+
+@api.route('/forgotPassword/<string:id>', methods=["GET"])
+def ForgotPassword (id):
+    regex = '^(\w|\.|\_|\-)+[@](\w|\_|\-|\.)+[.]\w{2,3}$'
+    if(re.search(regex, id)):
+      
+        user = User.query.filter_by(email=id, is_Active=True).first()
+        if user is None:
+            return jsonify({"msg": "User not found"}),404
+
+        user.password = "!234s678"
+        db.session.commit()
+        return jsonify({"msg": "Password Generated"}),200
+    
+    else:
+        return jsonify({"msg": "Wrong Email"}),411
+
+#Delete route
+@api.route('/user/<id>', methods=['DELETE'])
+def delete_User(id):
+  db.delete_one({'_id': ObjectId(id)})
+  return jsonify({'message': 'User Deleted'})
 
 
-    return jsonify(response_body), 200
+    

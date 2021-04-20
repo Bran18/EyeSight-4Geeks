@@ -1,8 +1,60 @@
-import React from "react";
-import LoginForm from "../component/LoginForm";
+import React, { useContext, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 const Login = () => {
-	return <LoginForm />;
+	const { store, actions } = useContext(Context);
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+
+	const handlerClick = e => {
+		e.preventDefault();
+
+		actions.setLogin({
+			email: email,
+			password: password
+		});
+	};
+
+	useEffect(() => {
+		actions.getToken();
+	}, []);
+
+	return (
+		<div className="row w-100 d-flex justify-content-center">
+			<div className="text-center mx-auto mt-5">
+				<h1>Login with your credentials</h1>
+
+				<form>
+					<div className="mb-3">
+						<label className="form-label">Email address</label>
+						<input
+							value={email}
+							onChange={e => setEmail(e.target.value)}
+							type="email"
+							className="form-control"
+						/>
+					</div>
+					<div className="mb-3">
+						<label className="form-label">Password</label>
+						<input
+							value={password}
+							onChange={e => setPassword(e.target.value)}
+							type="password"
+							className="form-control"
+						/>
+					</div>
+					<button type="submit" onClick={e => handlerClick(e)} className="btn btn-primary  mr-3 mb-3">
+						Submit
+					</button>
+
+					<Link to="/register" className="btn btn-outline-success mx-auto mr-3 mb-3">
+						Register!
+					</Link>
+				</form>
+			</div>
+		</div>
+	);
 };
 
 export default Login;
