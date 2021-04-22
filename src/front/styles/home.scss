@@ -8,8 +8,9 @@
 }
 
 
-/* MARKETING CONTENT
--------------------------------------------------- */
+/*==================================================
+                    MARKETING CONTENT
+===================================================*/
 
 .marketing .col-lg-4 {
   margin-bottom: 1.5rem;
@@ -30,8 +31,10 @@
     width: 500px;					
 }
 
-/* Featurettes
-------------------------- */
+
+/*==================================================
+                    Featurettes
+===================================================*/
 
 .row.featurette {
   margin: 5rem 0; /* Space out the Bootstrap <hr> more */
@@ -100,9 +103,21 @@ height: 100vh;
      margin-bottom: 45px;
      font-family: 'Quicksand', sans-serif;
 }
+/*==================================================
+                    HomeDemo
+===================================================*/
+.img-thumbnail{
+    transition: all .2s ease-in-out;
+    
+}
+.img-thumbnail:hover{
+    transform: scale(1.1);
+    border: 1px solid #9f42cb; 
+}
 
-/* RESPONSIVE CSS
--------------------------------------------------- */
+/*==================================================
+                    RESPONSIVE CSS
+===================================================*/
 
 @media (min-width: 40em) {
 
@@ -115,6 +130,7 @@ height: 100vh;
   .featurette-heading {
     margin-top: 7rem;
   }
+  
 }
 
 
@@ -123,6 +139,7 @@ height: 100vh;
     font-size: 70px;
     margin-top: -150px;
   }
+  
 }
 
 @media screen and (max-width: 768px) {
@@ -130,4 +147,7 @@ height: 100vh;
     font-size: 50px;
     margin-top: -100px;
   }
+  
 }
+
+
