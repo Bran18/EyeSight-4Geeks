@@ -23,9 +23,9 @@ def handle_hello():
     return jsonify(response_body), 200
 
 #Calling the API external request
-@api.route('/external', methods=["GET"])
+@api.route('/external', methods=["POST"])
 def set_url():
-    user_url='https://ep01.epimg.net/elviajero/imagenes/2019/12/06/album/1575647129_239693_1575651292_noticia_normal_recorte1.jpg'
+    user_url= request.json["url"]
     results= request_call_integration(user_url)
     return jsonify(results),200
 
