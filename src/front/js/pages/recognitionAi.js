@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 
 const RecognitionAi = () => {
-	const [url, setUrl] = useState([]);
+	const [url, setUrl] = useState("");
 	const { store, actions } = useContext(Context);
 
 	const handlerClick = e => {
@@ -11,7 +11,6 @@ const RecognitionAi = () => {
 			url: url
 		});
 	};
-	console.log("datos=", url);
 	return (
 		<div>
 			<div>
@@ -37,8 +36,13 @@ const RecognitionAi = () => {
 							</div>
 							<div className="col-lg">
 								<ul className="list-group">
-									{actions.url}
-									<li className="list-group-item d-flex justify-content-between align-items-center" />
+									{store.apiResults.map(element => (
+										<li
+											className="list-group-item d-flex justify-content-between align-items-center"
+											key={element}>
+											{element}
+										</li>
+									))}
 								</ul>
 							</div>
 							<div className="col-lg">Language</div>

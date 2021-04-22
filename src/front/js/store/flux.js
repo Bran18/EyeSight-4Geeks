@@ -67,6 +67,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.catch(err => console.log(err));
 			},
+
 			//Login Accition begins
 			setLogin: user => {
 				const additionalSettings = {
