@@ -29,30 +29,30 @@ const RecognitionAi = () => {
 				<div>
 					<div className="container-fluid">
 						<div className="row">
-							<div className="col-lg">
+							<div className="col-lg-7">
 								<div className="embed-responsive embed-responsive-16by9">
 									<iframe className="embed-responsive-item" src={url} />
 								</div>
 							</div>
-							<div className="col-lg">
+							<div className="col-lg-2">
 								<ul className="list-group">
 									{store.apiResults.map(element => (
 										<li
-											className="list-group-item d-flex justify-content-between align-items-center"
+											className="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
 											key={element}>
 											{element}
 										</li>
 									))}
 								</ul>
 							</div>
-							<div className="col-lg">Language</div>
+							<div className="col-lg-2">Language</div>
 						</div>
 					</div>
 				</div>
 				<div className="container">
 					<form>
 						<div className="mb-3">
-							<label className="form-label">Try your own image or video</label>
+							<label className="form-label">Try your own image</label>
 							<input
 								value={url}
 								onChange={e => setUrl(e.target.value)}
