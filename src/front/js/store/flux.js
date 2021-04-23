@@ -2,14 +2,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			user: {
-				expires: "",
-				token: "",
 				username: "",
 				email: "",
 				userId: "",
 				userName: "",
-				isUserAuth: "false"
-			}
+				userUrl: ""
+			},
+			apiResults: []
 		},
 
 		actions: {
@@ -29,6 +28,47 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log("-->", tokenLocal);
 				console.log("-->", JSON.stringify(userLocal));
 			},
+
+			//URL action begins
+			setUrl: url => {
+				fetch(process.env.BACKEND_URL + "/api/external", {
+					method: "POST",
+					body: JSON.stringify(url),
+					headers: { "Content-type": "application/json;" }
+				})
+					.then(res => res.json())
+					.then(data => {
+						console.log("Flux API", data);
+						setStore({ apiResults: data });
+					})
+					.catch(err => console.log(err));
+			},
+
+			//Register action begins
+			setRegister: user => {
+				const additionalSettings = {
+					method: "POST",
+					header: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify(user)
+				};
+
+				fetch(process.env.BACKEND_URL + "/api/register", {
+					method: "POST",
+					body: JSON.stringify(user),
+					headers: { "Content-type": "application/json; charset=UTF-8" }
+				})
+					.then(res => res.json())
+					.then(data => {
+						console.log(data);
+						//setUserAut();
+						setStore({ user: data });
+					})
+					.catch(err => console.log(err));
+			},
+
+			//Login Accition begins
 			setLogin: user => {
 				const additionalSettings = {
 					method: "POST",
@@ -63,11 +103,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(resp => resp.json())
 					.then(data => setStore({ message: data.message }))
 					.catch(error => console.log("Error loading message from backend", error));
-			},
-
-			logout: () => {
-				getActions().removeUserToken();
-				getActions().unsetUserAuth();
 			}
 		}
 	};
