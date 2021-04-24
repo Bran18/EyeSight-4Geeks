@@ -50,7 +50,7 @@ export const Navbar = () => {
 				<button
 					id="btnGroupDrop1"
 					type="button"
-					className="btn btn-outline-primary dropdown-toggle"
+					className="btn btn-secondary dropdown-toggle"
 					data-toggle="dropdown"
 					aria-haspopup="true"
 					aria-expanded="false">
