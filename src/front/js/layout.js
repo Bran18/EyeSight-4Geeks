@@ -6,6 +6,7 @@ import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Register } from "./pages/register";
 import Login from "./pages/login";
+import RecognitionAi from "./pages/recognitionAi";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
@@ -32,8 +33,8 @@ const Layout = () => {
 						<Route exact path="/register">
 							<Register />
 						</Route>
-						<Route>
-							<h1>Not found!</h1>
+						<Route exact path="/recognitionAi">
+							<RecognitionAi />
 						</Route>
 					</Switch>
 					<Footer />

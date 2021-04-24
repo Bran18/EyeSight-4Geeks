@@ -7,7 +7,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				userId: "",
 				userName: "",
 				userUrl: ""
-			}
+            },
+			apiResults: []
 		},
 
 		actions: {
@@ -28,7 +29,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log("-->", JSON.stringify(userLocal));
 			},
 
-			//Register acction begins
+			//URL action begins
+			setUrl: url => {
+				fetch(process.env.BACKEND_URL + "/api/external", {
+					method: "POST",
+					body: JSON.stringify(url),
+					headers: { "Content-type": "application/json;" }
+				})
+					.then(res => res.json())
+					.then(data => {
+						console.log("Flux API", data);
+						setStore({ apiResults: data });
+					})
+					.catch(err => console.log(err));
+			},
+
+			//Register action begins
 			setRegister: user => {
 				const additionalSettings = {
 					method: "POST",
@@ -51,6 +67,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.catch(err => console.log(err));
 			},
+
 			//Login Accition begins
 			setLogin: user => {
 				const additionalSettings = {
