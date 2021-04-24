@@ -7,6 +7,7 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 # This is how you authenticate.
 metadata = (('authorization', 'Key c36890cd5bde4304b87edbf5af88aead'),)
 
+#Api Clarify
 def request_call_integration(user_url):
     request = service_pb2.PostModelOutputsRequest(
         model_id='aaa03c23b3724a16a56b629203edc62c',
@@ -25,4 +26,4 @@ def request_call_integration(user_url):
         #print('%12s: %.2f' % (concept.name, concept.value))
     return request_data
 
-    
+    #Api Google
