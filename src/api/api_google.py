@@ -1,26 +1,26 @@
 # from google.cloud import translate
 from google.cloud import translate_v2 as translate
 
-text = ["storm", "landscape", "mountain", "fog", "nature", "rain", "lightning", "sky", "thunderstorm", "no person", "travel", "mist", "dawn", "thunder", "cloud", "water", "sunset", "snow", "valley", "hike"]
-def translate():
+# text = ["storm", "landscape", "mountain", "fog", "nature", "rain", "lightning", "sky", "thunderstorm", "no person", "travel", "mist", "dawn", "thunder", "cloud", "water", "sunset", "snow", "valley", "hike"]
+# def translate():
 
-    from google.cloud import translate_v2 as translate
+#     from google.cloud import translate_v2 as translate
 
-    translate_client = translate.Client()
+#     translate_client = translate.Client()
 
-    result = translate_client.translate(text, source_language='en', target_language='es')
-    print(result)
-    # for value in result.items():  #accessing values
-    #     print(value)
+#     result = translate_client.translate(text, source_language='en', target_language='es')
+#     print(result)
+#     # for value in result.items():  #accessing values
+#     #     print(value)
     
-    # target = 'es'
-    # output = translate_client.translate(
-    #     text,
-    #     target_language=target)
-    # print(u"{}".format(output))
-    # return output
+#     # target = 'es'
+#     # output = translate_client.translate(
+#     #     text,
+#     #     target_language=target)
+#     # print(u"{}".format(output))
+#     # return output
 
-translate()
+# translate()
 # translate_results()
 # # detect_language("hola")
 
@@ -43,7 +43,7 @@ def translate_results(target, text):
     # Text can also be a sequence of strings, in which case this method
     # will return a sequence of results for each text.
     result = translate_client.translate(text, target_language=target)
-
+    print(result)
     print(u"{}".format(result["translatedText"]))
     return u"{}".format(result["translatedText"])
   

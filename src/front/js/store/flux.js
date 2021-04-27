@@ -7,7 +7,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				userId: "",
 				userName: "",
 				userUrl: ""
-            },
+			},
 			apiResults: []
 		},
 
