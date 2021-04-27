@@ -9,6 +9,7 @@ from api.models import db, User
 from api.utils import generate_sitemap, APIException
 #importin external_api funtion
 from api.external_api import request_call_integration
+from api.api_google import translate_results
 
 api = Blueprint('api', __name__)
 
@@ -22,12 +23,16 @@ def handle_hello():
 
     return jsonify(response_body), 200
 
+text = ["storm", "landscape", "mountain", "fog", "nature", "rain", "lightning", "sky", "thunderstorm", "no person", "travel", "mist", "dawn", "thunder", "cloud", "water", "sunset", "snow", "valley", "hike"]
+
 #Calling the API external request
 @api.route('/external', methods=["POST"])
 def set_url():
     user_url= request.json["url"]
     results= request_call_integration(user_url)
     return jsonify(results),200
+    translate_results('es', text)
+    print(translate_results)
 
 # adding new tested routes
 @api.route('/user', methods=["GET"])

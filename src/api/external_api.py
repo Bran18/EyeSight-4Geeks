@@ -26,4 +26,4 @@ def request_call_integration(user_url):
         #print('%12s: %.2f' % (concept.name, concept.value))
     return request_data
 
-    #Api Google
+   
