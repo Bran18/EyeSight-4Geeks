@@ -8,7 +8,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				userName: "",
 				userUrl: ""
 			},
-			apiResults: []
+			apiResults: [],
+			googleResults: []
 		},
 
 		actions: {
@@ -38,8 +39,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 					.then(res => res.json())
 					.then(data => {
-						console.log("Flux API", data);
-						setStore({ apiResults: data });
+						setStore({ apiResults: data[0]["en"], googleResults: data[0]["es"] });
 					})
 					.catch(err => console.log(err));
 			},

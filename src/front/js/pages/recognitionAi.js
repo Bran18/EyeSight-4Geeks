@@ -45,7 +45,17 @@ const RecognitionAi = () => {
 									))}
 								</ul>
 							</div>
-							<div className="col-lg-2">Language</div>
+							<div className="col-lg-2">
+								<ul className="list-group">
+									{store.googleResults.map(element => (
+										<li
+											className="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+											key={element}>
+											{element}
+										</li>
+									))}
+								</ul>
+							</div>
 						</div>
 					</div>
 				</div>

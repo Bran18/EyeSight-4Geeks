@@ -28,10 +28,9 @@ def handle_hello():
 def set_url():
     user_url= request.json["url"]
     results= request_call_integration(user_url)
-    return jsonify(results),200
-    print("API",results)
-    translate_results('es', results)
-    print(translate_results)
+    data_es = translate_results('es', results)
+    data = [{'en':results,'es':data_es}]
+    return jsonify(data),200
 
 # adding new tested routes
 @api.route('/user', methods=["GET"])
