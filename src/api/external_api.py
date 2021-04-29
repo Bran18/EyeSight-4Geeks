@@ -23,7 +23,6 @@ def request_call_integration(user_url):
     request_data=[]
     for concept in response.outputs[0].data.concepts:
         request_data.append(concept.name)
-        #print('%12s: %.2f' % (concept.name, concept.value))
     return request_data
 
-    #Api Google
+   
