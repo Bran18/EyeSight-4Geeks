@@ -9,18 +9,8 @@ class User(db.Model):
     firstname = db.Column(db.String(120), unique=False, nullable=False)
     lastname = db.Column(db.String(120), unique=False, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
-    password = db.Column(db.String(80), unique=False, nullable=False)
-    url=db.Column(db.String(280), unique=False)
+    password = db.Column(db.String(200), unique=False, nullable=False)
     is_Active = db.Column(db.Boolean(), unique=False, nullable=False)
-
-    def __init__(self, username, firstname, lastName, email, password):
-        self.username= username,
-        self.firstname = firstname,
-        self.lastname = lastName,
-        self.email = email,
-        self.password = password,
-        self.url = url,
-        self.is_Active = True
 
     def __repr__(self):
         return '<User %r>' % self.username
@@ -29,7 +19,7 @@ class User(db.Model):
         return {
             "id": self.id,
             "username": self.username,
-            "firsname": self.firstname,
+            "firstname": self.firstname,
             "lastname": self.lastname,
             "email": self.email,
             "is_active": self.is_Active,
