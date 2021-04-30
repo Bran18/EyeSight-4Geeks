@@ -6,7 +6,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				email: "",
 				userId: "",
 				userName: "",
-				userUrl: ""
+				userUrl: "",
+				token: "",
+				registered: false
 			},
 			apiResults: [],
 			googleResults: []
@@ -14,8 +16,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 		actions: {
 			removeUserToken: () => localStorage.removeItem("token"),
-			unsetUserAuth: () => setStore({ isUserAuth: false }),
-			setUserAuth: () => setStore({ isUserAuth: true }),
 
 			getToken: () => {
 				const tokenLocal = localStorage.getItem("token");
@@ -46,53 +46,36 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			//Register action begins
 			setRegister: user => {
-				const additionalSettings = {
-					method: "POST",
-					header: {
-						"Content-Type": "application/json"
-					},
-					body: JSON.stringify(user)
-				};
-
 				fetch(process.env.BACKEND_URL + "/api/register", {
 					method: "POST",
 					body: JSON.stringify(user),
-					headers: { "Content-type": "application/json; charset=UTF-8" }
+					headers: { "Content-type": "application/json;" }
 				})
 					.then(res => res.json())
 					.then(data => {
-						console.log(data);
-						//setUserAut();
-						setStore({ user: data });
+						console.log("Data comes with these inf:", data);
+						setStore({ user: data }, { registered: true });
 					})
 					.catch(err => console.log(err));
 			},
 
 			//Login Accition begins
 			setLogin: user => {
-				const additionalSettings = {
-					method: "POST",
-					header: {
-						"Content-Type": "application/json"
-					},
-					body: JSON.stringify(user)
-				};
-
 				fetch(process.env.BACKEND_URL + "/api/login", {
 					method: "POST",
 					body: JSON.stringify(user),
-					headers: { "Content-type": "application/json; charset=UTF-8" }
+					headers: { "Content-type": "application/json;" }
 				})
 					.then(resp => resp.json())
 					.then(data => {
-						getActions().setUserAuth();
-						console.log("--data--", data);
+						console.log("Login data comes with these:", data);
 						setStore({ user: data });
 
 						if (typeof Storage !== "undefined") {
 							localStorage.setItem("token", data.token);
 							localStorage.setItem("user", JSON.stringify(data.user));
 						} else {
+							//localstorage no soportado
 						}
 					})
 					.catch(error => console.log("Error loading message from backend", error));

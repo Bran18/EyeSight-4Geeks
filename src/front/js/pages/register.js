@@ -4,6 +4,8 @@ import { Redirect } from "react-router-dom";
 
 export const Register = () => {
 	const { store, actions } = useContext(Context);
+	const [firstname, setfirstname] = useState("");
+	const [lastname, setlastname] = useState("");
 	const [username, setUsername] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -12,6 +14,8 @@ export const Register = () => {
 		e.preventDefault();
 
 		actions.setRegister({
+			firstname: firstname,
+			lastname: lastname,
 			email: email,
 			username: username,
 			password: password
@@ -32,6 +36,29 @@ export const Register = () => {
 						className="form-control"
 						id="exampleUserName"
 						aria-describedby="userHelp"
+						placeholder="Username"
+					/>
+					<label htmlFor="exampleInputfirtsname" className="form-label">
+						First name
+					</label>
+					<input
+						onChange={e => setfirstname(e.target.value)}
+						type="text"
+						className="form-control"
+						id="exampleInputfirtsname"
+						aria-describedby="userHelp"
+						placeholder="First name"
+					/>
+					<label htmlFor="exampleInputfirtsname" className="form-label">
+						Last Name
+					</label>
+					<input
+						onChange={e => setlastname(e.target.value)}
+						type="text"
+						className="form-control"
+						id="exampleInputlastname"
+						aria-describedby="userHelp"
+						placeholder="First name"
 					/>
 					<label htmlFor="exampleInputEmail1" className="form-label">
 						Email address
@@ -62,6 +89,7 @@ export const Register = () => {
 					Submit
 				</button>
 			</form>
+			{store.user.registered !== null ? <Redirect to="/login" /> : ""}
 		</div>
 	);
 };
