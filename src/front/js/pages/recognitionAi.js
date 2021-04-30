@@ -15,13 +15,13 @@ const RecognitionAi = () => {
 		<div>
 			<div>
 				<div className="jumbotron">
-					<h1 className="display-4">Image Recognition AI Model</h1>
-					<p className="lead">
+					<h1 className="text-center display-4">Image Recognition AI Model</h1>
+					<p className="text-center lead">
 						Recognize over 11,000 different concepts including objects, themes, moods, and more. This model
 						is a great all-purpose solution for most visual recognition needs.
 					</p>
-					<hr className="my-4" />
-					<p>
+					<hr className="text-center my-4" />
+					<p className="text-center my-4">
 						The Predict API returns a list of concepts with corresponding probability scores on the
 						likelihood that these concepts are present within the image.
 					</p>
@@ -29,10 +29,9 @@ const RecognitionAi = () => {
 				<div>
 					<div className="container-fluid">
 						<div className="row">
-							<div className="col-lg-7">
-								<div className="embed-responsive embed-responsive-16by9">
-									<iframe className="embed-responsive-item" src={url} />
-								</div>
+							<div className="col-lg-8" style={{ width: "600px", height: "650px", paddingLeft: "50px" }}>
+								<h2 className="text-center">Image for Recognition Ai</h2>
+								<img src={url} className="img-fluid" />
 							</div>
 							<div className="col-lg-2">
 								<ul className="list-group">
@@ -60,14 +59,15 @@ const RecognitionAi = () => {
 					</div>
 				</div>
 				<div className="container">
-					<form>
+					<form className="align-items-center" style={{ width: "500px", height: "250px" }}>
 						<div className="mb-3">
-							<label className="form-label">Try your own image</label>
+							<label className="form-label">Try your own image.</label>
 							<input
 								value={url}
 								onChange={e => setUrl(e.target.value)}
 								type="text"
 								className="form-control"
+								placeholder="Copy your link here."
 							/>
 						</div>
 						<button type="submit" onClick={e => handlerClick(e)} className="btn btn-primary  mr-3 mb-3">

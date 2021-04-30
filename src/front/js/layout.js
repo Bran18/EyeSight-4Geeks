@@ -37,6 +37,7 @@ const Layout = () => {
 							<RecognitionAi />
 						</Route>
 					</Switch>
+					<Footer />
 				</ScrollToTop>
 			</BrowserRouter>
 		</div>

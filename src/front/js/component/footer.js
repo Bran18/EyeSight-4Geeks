@@ -10,8 +10,8 @@ export const Footer = () => (
 						<h3 className="text-dark">Lets get started!</h3>
 					</div>
 					<div className="ml-auto">
-						<a href="#" className="btn btn-dark rounded-0 py-3 px-5">
-							Contact us
+						<a href="/register" className="btn btn-dark rounded-0 py-3 px-5">
+							Register us
 						</a>
 					</div>
 				</div>

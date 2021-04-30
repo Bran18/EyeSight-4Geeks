@@ -25,7 +25,7 @@ export const Register = () => {
 	return (
 		<div className="mx-auto pt-5">
 			<h1>Register</h1>
-			<form onSubmit={handleSubmit} style={{ width: "500px" }}>
+			<form onSubmit={handleSubmit} style={{ width: "500px", height: "425px" }}>
 				<div className="mb-3">
 					<label htmlFor="exampleInputUsername" className="form-label">
 						Username
