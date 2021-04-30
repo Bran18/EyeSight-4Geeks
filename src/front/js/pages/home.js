@@ -10,7 +10,6 @@ import VisionSection from "../component/VisionSection";
 export const Home = () => (
 	<div>
 		<Hero />
-
 		<Feature />
 		<VisionSection />
 		<HomeDemo />
