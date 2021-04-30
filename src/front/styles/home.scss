@@ -1,5 +1,6 @@
-.nav{
+.navbar{
     font-family: 'Quicksand', sans-serif;
+    background-color: #ffffff !important;
 }
 
 .nav-logo{
@@ -63,7 +64,7 @@ height: 100vh;
 }
 
 .hero-container >  h1 {
-  color:#843885;
+  color:#7D1FC9;
   font-size: 100px;
   margin-top: -100px;
   font-family: 'Quicksand', sans-serif;
@@ -86,14 +87,13 @@ height: 100vh;
 }
 
 .vision_section {
-    background-color: #843885;
+    background-color: #3B2699;
     color: #ffffff;
     text-align: justify;
 }
 
 .vision_section .row>div {
     margin: 20px 0;
-
 }
 
 .layout_padding2 {
@@ -103,23 +103,38 @@ height: 100vh;
      margin-bottom: 45px;
      font-family: 'Quicksand', sans-serif;
 }
+
+.jumbotron{
+  
+   background-color: rgb(48, 25, 151);
+   color:#ffffff;
+}
+
+.recongnition_section{
+    background-color: #1B2634;
+    box-sizing: border-box;
+
+}
+
+
 /*==================================================
                     HomeDemo
 ===================================================*/
 .img-thumbnail{
     transition: all 0.5s ease-in-out;
+    border: none;
     
 }
 .img-thumbnail:hover{
     transform: scale(1.1);
-    border: 3px solid #9f42cb; 
+    border: 3px solid #7D1FC9; 
     border-radius: 50px 0 50px;
 }
 .home__demo__title{
     font-weight: 500;
     line-height: 1;
     letter-spacing: -.05rem;
-    color: #ff5c70;
+    color: #333333;
     font-size: 2.5rem;
 }
 
@@ -140,7 +155,6 @@ height: 100vh;
   }
   
 }
-
 
 @media screen and (max-width: 960px) {
   .hero-container > h1 {

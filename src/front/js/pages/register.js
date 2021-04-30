@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { Redirect } from "react-router-dom";
 
-export const Register = () => {
+const Register = () => {
 	const { store, actions } = useContext(Context);
 	const [firstname, setfirstname] = useState("");
 	const [lastname, setlastname] = useState("");
@@ -23,7 +23,7 @@ export const Register = () => {
 	};
 
 	return (
-		<div className="mx-auto pt-5">
+		<div className="mx-auto pt-5 pb-4">
 			<h1>Register</h1>
 			<form onSubmit={handleSubmit} style={{ width: "500px", height: "425px" }}>
 				<div className="mb-3">
@@ -85,11 +85,13 @@ export const Register = () => {
 						id="exampleInputPassword1"
 					/>
 				</div>
-				<button type="submit" className="btn btn-primary">
+				<button type="submit" className="btn btn-primary mb-4">
 					Submit
 				</button>
 			</form>
-			{store.user.registered !== null ? <Redirect to="/login" /> : ""}
+			<br />
 		</div>
 	);
 };
+
+export default Register;
