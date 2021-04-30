@@ -5,8 +5,8 @@ const Hero = () => {
 	return (
 		<div>
 			<div className="hero-container">
-				<h1 className="text-uppercase">EyeSight</h1>
-				<p>Another way of learning</p>
+				<h1 className="text-center">eSight</h1>
+				<p>Inspiring Visual Thinking</p>
 			</div>
 		</div>
 	);

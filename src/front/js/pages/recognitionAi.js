@@ -6,35 +6,53 @@ const RecognitionAi = () => {
 	const { store, actions } = useContext(Context);
 
 	const handlerClick = e => {
-		e.preventDefault();
-		actions.setUrl({
-			url: url
-		});
+		if (e.key === "Enter") {
+			e.preventDefault();
+			actions.setUrl({
+				url: url
+			});
+		}
 	};
 	return (
 		<div>
-			<div>
+			<div className="ai">
 				<div className="jumbotron">
-					<h1 className="text-center display-4">Image Recognition AI Model</h1>
-					<p className="text-center lead">
+					<h1 className="text-left display-4">eSight Recognition AI Model</h1>
+					<p className="text-justify lead">
 						Recognize over 11,000 different concepts including objects, themes, moods, and more. This model
 						is a great all-purpose solution for most visual recognition needs.
 					</p>
 					<hr className="text-center my-4" />
-					<p className="text-center my-4">
-						The Predict API returns a list of concepts with corresponding probability scores on the
-						likelihood that these concepts are present within the image.
+					<p className="text-justify my-4">
+						The eSight AI returns a list of concepts and the translation to spanish
 					</p>
 				</div>
 				<div>
-					<div className="container-fluid">
+					<div className="container">
+						<form className="align-items-center" style={{ width: "500px", height: "100px" }}>
+							<div className="mb-3">
+								<label className="form-label">Try your image</label>
+								<input
+									value={url}
+									onChange={e => setUrl(e.target.value)}
+									onKeyPress={e => handlerClick(e)}
+									type="text"
+									className="form-control"
+									placeholder="Copy your link here."
+								/>
+							</div>
+						</form>
+					</div>
+
+					<div className="container recongnition_section">
 						<div className="row">
-							<div className="col-lg-8" style={{ width: "600px", height: "650px", paddingLeft: "50px" }}>
-								<h2 className="text-center">Image for Recognition Ai</h2>
+							<div
+								className="col-lg-6 mt-5"
+								style={{ width: "500px", height: "650px", paddingLeft: "50px" }}>
 								<img src={url} className="img-fluid" />
 							</div>
-							<div className="col-lg-2">
-								<ul className="list-group">
+							<div className="col-lg-3 mt-2 mb-2">
+								<ul className="list-group overflow-auto">
 									{store.apiResults.map(element => (
 										<li
 											className="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
@@ -44,8 +62,8 @@ const RecognitionAi = () => {
 									))}
 								</ul>
 							</div>
-							<div className="col-lg-2">
-								<ul className="list-group">
+							<div className="col-lg-3 mt-2 mb-2">
+								<ul className="list-group overflow-auto">
 									{store.googleResults.map(element => (
 										<li
 											className="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
@@ -57,23 +75,6 @@ const RecognitionAi = () => {
 							</div>
 						</div>
 					</div>
-				</div>
-				<div className="container">
-					<form className="align-items-center" style={{ width: "500px", height: "250px" }}>
-						<div className="mb-3">
-							<label className="form-label">Try your own image.</label>
-							<input
-								value={url}
-								onChange={e => setUrl(e.target.value)}
-								type="text"
-								className="form-control"
-								placeholder="Copy your link here."
-							/>
-						</div>
-						<button type="submit" onClick={e => handlerClick(e)} className="btn btn-primary  mr-3 mb-3">
-							Submit
-						</button>
-					</form>
 				</div>
 			</div>
 		</div>

@@ -51,7 +51,7 @@ def get_user ():
     result = [user.serialize() for user in User.query.all()]
     return jsonify(result),200
 
-#adding login route
+
 #set login route
 @api.route('/login', methods=['POST','GET'])
 def set_login():

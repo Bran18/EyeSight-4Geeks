@@ -16,7 +16,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 		actions: {
 			removeUserToken: () => localStorage.removeItem("token"),
-
 			getToken: () => {
 				const tokenLocal = localStorage.getItem("token");
 				const userLocal = JSON.parse(localStorage.getItem("user"));

@@ -1,41 +1,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import LearnImage from "../../img/learn.png";
 
 const HomeDemo = () => {
 	return (
 		<div className="container">
-			<h2 className=" text-center mb-5 home__demo__title">Learn With Your Favorite Image!</h2>
+			<h3 className=" text-center mb-5 home__demo__title">Try it out with your favorite Image!</h3>
 			<div className="row d-flex justify-content-center mb-5">
 				<div className="col">
 					<Link to="/">
 						<a href="#">
-							<img
-								className="img-thumbnail "
-								src="https://dummyimage.com/310x220/000/fff"
-								alt="Thumbnail image"
-							/>
+							<img className="img-thumbnail " src={LearnImage} alt="Thumbnail image" />
 						</a>
 					</Link>
 				</div>
 				<div className="col">
 					<Link to="/">
 						<a href="#">
-							<img
-								className="img-thumbnail "
-								src="https://dummyimage.com/310x220/000/fff"
-								alt="Thumbnail image"
-							/>
+							<img className="img-thumbnail " src={LearnImage} alt="Thumbnail image" />
 						</a>
 					</Link>
 				</div>
 				<div className="col">
 					<Link to="/">
 						<a href="#">
-							<img
-								className="img-thumbnail "
-								src="https://dummyimage.com/310x220/000/fff"
-								alt="Thumbnail image"
-							/>
+							<img className="img-thumbnail " src={LearnImage} alt="Thumbnail image" />
 						</a>
 					</Link>
 				</div>
