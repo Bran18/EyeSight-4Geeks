@@ -9,6 +9,7 @@ import RecognitionAi from "./pages/recognitionAi";
 import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
 import Footer from "./component/Footer";
+import UserProfile from "./pages/userProfile";
 
 //create your first component
 const Layout = () => {
@@ -34,9 +35,11 @@ const Layout = () => {
 						<Route exact path="/recognitionAi">
 							<RecognitionAi />
 						</Route>
+						<Route exact path="/userProfile">
+							<UserProfile />
+						</Route>
 					</Switch>
 				</ScrollToTop>
-				<Footer />
 			</BrowserRouter>
 		</div>
 	);

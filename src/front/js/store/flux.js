@@ -8,7 +8,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				userName: "",
 				userUrl: "",
 				token: "",
-				registered: false
+				registered: false,
+				logged: false
 			},
 			apiResults: [],
 			googleResults: []
@@ -16,6 +17,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 		actions: {
 			removeUserToken: () => localStorage.removeItem("token"),
+
+			setLogout: () => {
+				setStore({ isLogged: false });
+			},
+			setLogged: () => {
+				setStore({ isLogged: true });
+			},
+
 			getToken: () => {
 				const tokenLocal = localStorage.getItem("token");
 				const userLocal = JSON.parse(localStorage.getItem("user"));
@@ -25,8 +34,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 						user: userLocal
 					}
 				});
-				console.log("-->", tokenLocal);
-				console.log("-->", JSON.stringify(userLocal));
+				console.log("Token local -->", tokenLocal);
+				console.log("User local-->", JSON.stringify(userLocal));
 			},
 
 			//URL action begins
@@ -43,16 +52,44 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(err => console.log(err));
 			},
 
+			getUser: user => {
+				fetch("https://3001-azure-sawfish-tde5s0ls.ws-us03.gitpod.io/api/user", {
+					method: "GET",
+					body: JSON.stringify(user),
+					headers: { "Content-type": "application/json;" }
+				})
+					.then(res => res.json())
+					.then(data => {
+						console.log("User data comes with these inf:", data);
+						setStore({ user: data });
+					})
+					.catch(err => console.log(err));
+			},
+
 			//Register action begins
 			setRegister: user => {
-				fetch(process.env.BACKEND_URL + "/api/register", {
+				fetch("https://3001-azure-sawfish-tde5s0ls.ws-us03.gitpod.io/api/register", {
 					method: "POST",
 					body: JSON.stringify(user),
 					headers: { "Content-type": "application/json;" }
 				})
 					.then(res => res.json())
 					.then(data => {
-						console.log("Data comes with these inf:", data);
+						console.log("Registered user comes with these inf:", data);
+						setStore({ user: data }, { registered: true });
+					})
+					.catch(err => console.log(err));
+			},
+
+			setUpdate: user => {
+				fetch("https://3001-azure-sawfish-tde5s0ls.ws-us03.gitpod.io/user/id", {
+					method: "PUT",
+					body: JSON.stringify(user),
+					headers: { "Content-type": "application/json;" }
+				})
+					.then(res => res.json())
+					.then(data => {
+						console.log("Updated user data goes with these inf:", data);
 						setStore({ user: data }, { registered: true });
 					})
 					.catch(err => console.log(err));
@@ -60,7 +97,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			//Login Accition begins
 			setLogin: user => {
-				fetch(process.env.BACKEND_URL + "/api/login", {
+				fetch("https://3001-azure-sawfish-tde5s0ls.ws-us03.gitpod.io/login", {
 					method: "POST",
 					body: JSON.stringify(user),
 					headers: { "Content-type": "application/json;" }
@@ -69,19 +106,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => {
 						console.log("Login data comes with these:", data);
 						setStore({ user: data });
+						setLogged();
 
 						if (typeof Storage !== "undefined") {
 							localStorage.setItem("token", data.token);
 							localStorage.setItem("user", JSON.stringify(data.user));
 						} else {
-							//localstorage no soportado
+							//localstorage error
 						}
 					})
 					.catch(error => console.log("Error loading message from backend", error));
 			},
 
 			getMessage: () => {
-				fetch(process.env.BACKEND_URL + "/api/hello")
+				fetch("https://3001-azure-sawfish-tde5s0ls.ws-us03.gitpod.io/api/hello")
 					.then(resp => resp.json())
 					.then(data => setStore({ message: data.message }))
 					.catch(error => console.log("Error loading message from backend", error));

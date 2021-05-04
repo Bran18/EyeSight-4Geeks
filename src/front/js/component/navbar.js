@@ -6,7 +6,9 @@ import eyeSihtLogo from "../../img/EyeSight-4Geeks.png";
 
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
-	const logout = () => {
+
+	const Logout = () => {
+		localStorage.removeItem("user");
 		actions.setLogout();
 	};
 

@@ -1,12 +1,3 @@
 {
-  "type": "service_account",
-  "project_id": "clean-road-311701",
-  "private_key_id": "ca57eb4eb8e79514676591063167d92a51fad58a",
-  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCtOXbjSpl0SuQN\nuAExpakNPZbbeLbgHHf1REgDKu1z0eqptyEQL4Qnz668dwl8RAKr5IpbzZJLcjLw\n7864WwH0SjY7j9i6hyL+zfXO6e0uqIAWK8Q11iMZU662B3++MTy7N9sxcwaKnQgE\nh+TIdyLuLe4Ud4Aw26LV7NeIN2JCD+uCDy/YTWTB3nmHFZXo3f8at+6LM+SuJV3s\nwppdMjcKBjiLOeX48zBhIykx5PYQ7XP+GD73jetgAT7mIvzZjXsTR36YUBiM5cv6\nsuaL0C8JTINC9xIIoWul1XD/9H2rl0M8Y8AS6kknKtxKV8xFmPV+gyzH6AoeQFxc\negi4I2WxAgMBAAECggEACREgm5sJrIry+ZOFCc/i/lzClbBG2jTYmTo+uV5jhBQb\nv/sO5vr7Dt5nBgRbtxO+6WJn/5AjX9bquwPCV+dOPeGDNIY9+4gb7nxh/mJDgOq0\nRvTO1gaPBcIEkLs/FiRw9QJicxR95il8BEix/UWHIDJqliBUfGTdVsHeh4m77JCK\nBIysuxM+qnJA6bRmMT4f2d8tkXKV01mapgzuusWITLk2WIv6gBW8xtQEG2mKzmK8\nx+gJKxTFHOj/BY0RI34VNf4i3cIvEjbeT2AosU5mds8EVb5Jv5YDuuo6Ev8kxFJ2\nRYHVglEMJsAHZelnd1bsF92l9zLvIIL+X8MwgmqpZQKBgQDdsWG2ZaMMNULXigXs\nk+W1QSs0pVr0T0NCR1BipKv0QmTSr79g4gUaFILCgA+k++dHOE7+FJEALJlRbWbM\nXDeuw2h1Bq05WwaNGVU4aMf4y1nfN+kQ1an88uwlhhyhDlJLLhK8Fyr2A4reM9SG\nPGssnIsrLY4yTuaf4lPIBDzihwKBgQDIB/NOO14eteInk4nPkX6jJ8INdbHJ16ZH\n85aguFStbfBTGAcXWzjZolC6Ui+ZxoY5gsiZ4nhdSBhBKevGkzwGEZSX/hFChS/H\nuv8yGED4rtMWUSio+RKZMUj+d7zDtBauE6HP21EwLa+0AuZ55ZO4NOZucoHFC4RO\nyq5awKYsBwKBgF0EkkUfvBvhNRyO0xGCtL0qjOBYCSO9JjFnDrl08plYSkmEaD5U\nV2Or+3l0lhvZfh8J50sAgh6al/Hsf1d70flIEEoZ9RC9uq/1UyaKAG3JlPnt0aK4\no8x4eND9xoFlKu5UdJPq/KGgtuGoyaFRNH7RaCtDwAgnxuiK5DBmZs19AoGAaRGE\nA3u7nHX9LLyajqTl191yWI+Rq2vSs8iHPjSUheRRb9QXJXWNDwPrU3MH/cYBiwPf\nSrVic90CoHfcmJmN1cI2Qv/5IO/EgS0ADtgeiIGL7xUCPn9V/ZGdvcw3IrTdlOJL\nBFs28g+NUwiS90RXq1JeF3WeJFpATQK5QoIextECgYBY7NwPMseavetFeFGgh2bB\nmc3IDSPa3cP+OWNCdkAE0mkL7Qf4EytyYeiraDnefClIe8/mfkeL+1m2/vXdOwrq\nKWVtfAEdw8tYGQoQp8AEYjjzVcRFAK4VWN7LBaZP7gG2kXVatRpc/GGt5JTiMKh+\nlhUWe6j9K25fqwVYk1UGcw==\n-----END PRIVATE KEY-----\n",
-  "client_email": "eyesight@clean-road-311701.iam.gserviceaccount.com",
-  "client_id": "118201351424332583406",
-  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-  "token_uri": "https://oauth2.googleapis.com/token",
-  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/eyesight%40clean-road-311701.iam.gserviceaccount.com"
+  /* aqui va el api de google /*
 }
