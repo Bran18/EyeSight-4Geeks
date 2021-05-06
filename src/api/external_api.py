@@ -8,13 +8,22 @@ from clarifai_grpc.grpc.api.status import status_code_pb2
 metadata = (('authorization', 'Key c36890cd5bde4304b87edbf5af88aead'),)
 
 #Api Clarify
-def request_call_integration(user_url):
+def request_call_integration(user_url, user_lan):
     request = service_pb2.PostModelOutputsRequest(
         model_id='aaa03c23b3724a16a56b629203edc62c',
         inputs=[
         resources_pb2.Input(data=resources_pb2.Data(image=resources_pb2.Image(url=user_url)))
-        ])
+        ],
+        model=resources_pb2.Model(
+            output_info=resources_pb2.OutputInfo(
+                output_config=resources_pb2.OutputConfig(
+                    language=user_lan  
+                )
+            )
+        ))
     response = stub.PostModelOutputs(request, metadata=metadata)
+
+
 
 
     if response.status.code != status_code_pb2.SUCCESS:

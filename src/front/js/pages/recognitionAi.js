@@ -3,16 +3,21 @@ import { Context } from "../store/appContext";
 
 const RecognitionAi = () => {
 	const [url, setUrl] = useState("");
+	const [language, setLanguage] = useState("");
+	const [transLan, setTransLan] = useState("");
 	const { store, actions } = useContext(Context);
 
 	const handlerClick = e => {
 		if (e.key === "Enter") {
 			e.preventDefault();
 			actions.setUrl({
-				url: url
+				url: url,
+				language: language,
+				transLan: transLan
 			});
 		}
 	};
+
 	return (
 		<div>
 			<div className="ai">
@@ -42,6 +47,40 @@ const RecognitionAi = () => {
 								/>
 							</div>
 						</form>
+						<div className="row row-cols-6">
+							<div className="col">
+								<div className="form-group">
+									<label className="exampleFormControlSelect1">Language 1</label>
+									<select
+										className="form-control"
+										id="exampleFormControlSelect1"
+										onChange={e => setLanguage(e.target.value)}>
+										<option value={"es"}>Spanish</option>
+										<option value={"en"}>English </option>
+										<option value={"nl"}>Dutch </option>
+										<option value={"fr"}>French </option>
+										<option value={"de"}>German </option>
+										<option value={"ru"}>Russian </option>
+									</select>
+								</div>
+							</div>
+							<div className="col">
+								<div className="form-group">
+									<label className="exampleFormControlSelect1">Language 2</label>
+									<select
+										className="form-control"
+										id="exampleFormControlSelect1"
+										onChange={e => setTransLan(e.target.value)}>
+										<option value={"es"}>Spanish</option>
+										<option value={"en"}>English </option>
+										<option value={"nl"}>Dutch </option>
+										<option value={"fr"}>French </option>
+										<option value={"de"}>German </option>
+										<option value={"ru"}>Russian </option>
+									</select>
+								</div>
+							</div>
+						</div>
 					</div>
 
 					<div className="container recongnition_section">

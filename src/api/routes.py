@@ -37,8 +37,10 @@ def handle_hello():
 @api.route('/external', methods=["POST"])
 def set_url():
     user_url= request.json["url"]
-    results= request_call_integration(user_url)
-    data_es = translate_results('es', results)
+    user_lan = request.json["language"]
+    results= request_call_integration(user_url, user_lan)
+    trans_lan = request.json["transLan"]
+    data_es = translate_results(trans_lan, results)
     data = [{'en':results,'es':data_es}]
     return jsonify(data),200
 

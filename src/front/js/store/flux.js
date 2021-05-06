@@ -34,10 +34,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			//URL action begins
-			setUrl: url => {
-				fetch("https://3001-black-goat-ylmo220h.ws-us03.gitpod.io/api/external", {
+			setUrl: (url, language, transLan) => {
+				fetch(process.env.BACKEND_URL + "/api/external", {
 					method: "POST",
-					body: JSON.stringify(url),
+					body: JSON.stringify(url, language, transLan),
 					headers: { "Content-type": "application/json;" }
 				})
 					.then(res => res.json())

@@ -38,8 +38,8 @@ const Layout = () => {
 						<Route exact path="/userProfile">
 							<UserProfile />
 						</Route>
-						<Footer />
 					</Switch>
+					<Footer />
 				</ScrollToTop>
 			</BrowserRouter>
 		</div>

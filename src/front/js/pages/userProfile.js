@@ -31,38 +31,38 @@ const UserProfile = () => {
 			<div className="card mb-3">
 				<div className="card-body">
 					<div className="row">
-						<div className="col-sm-3">
-							<h6 className="mb-0">Full Name</h6>
+						<div className="col-md-3">
+							<h6 className="mb-0">Username</h6>
 						</div>
-						<div className="col-sm-9 text-secondary" />
+						<div className="col-md-9 text-secondary" />
 					</div>
 					<hr />
 					<div className="row">
-						<div className="col-sm-3">
+						<div className="col-md-3">
+							<h6 className="mb-0">First Name</h6>
+						</div>
+						<div className="col-md-9 text-secondary" />
+					</div>
+					<hr />
+					<div className="row">
+						<div className="col-md-3">
+							<h6 className="mb-0">Last Name</h6>
+						</div>
+						<div className="col-md-9 text-secondary" />
+					</div>
+					<hr />
+					<div className="row">
+						<div className="col-md-3">
 							<h6 className="mb-0">Email</h6>
 						</div>
-						<div className="col-sm-9 text-secondary" />
+						<div className="col-md-9 text-secondary" />
 					</div>
 					<hr />
 					<div className="row">
-						<div className="col-sm-3">
-							<h6 className="mb-0">Phone</h6>
+						<div className="col-md-3">
+							<h6 className="mb-0">Password</h6>
 						</div>
-						<div className="col-sm-9 text-secondary" />
-					</div>
-					<hr />
-					<div className="row">
-						<div className="col-sm-3">
-							<h6 className="mb-0">Mobile</h6>
-						</div>
-						<div className="col-sm-9 text-secondary" />
-					</div>
-					<hr />
-					<div className="row">
-						<div className="col-sm-3">
-							<h6 className="mb-0">Address</h6>
-						</div>
-						<div className="col-sm-9 text-secondary" />
+						<div className="col-md-9 text-secondary" />
 					</div>
 				</div>
 			</div>
