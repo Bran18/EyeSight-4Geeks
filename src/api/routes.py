@@ -91,7 +91,7 @@ def set_login():
     return jsonify(data), 200
 
 @api.route('/logout/<id>')
-@jwt_required
+@jwt_required()
 def logout(id):
     db.session.delete(id)  # In order for this to work, I will have to ADD AND COMMIT A USER AS WELL, OTHERWISE GIVES ERROR
     db.session.commit()

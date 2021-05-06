@@ -7,22 +7,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 				userId: "",
 				userName: "",
 				userUrl: "",
-				token: "",
-				registered: false,
-				logged: false
+				token: ""
 			},
+			registered: false,
+			logged: false,
 			apiResults: [],
 			googleResults: []
 		},
 
 		actions: {
-			removeUserToken: () => localStorage.removeItem("token"),
-
 			setLogout: () => {
-				setStore({ isLogged: false });
-			},
-			setLogged: () => {
-				setStore({ isLogged: true });
+				setStore({ logged: false }), localStorage.removeItem("token");
 			},
 
 			getToken: () => {
@@ -40,7 +35,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			//URL action begins
 			setUrl: url => {
-				fetch(process.env.BACKEND_URL + "/api/external", {
+				fetch("https://3001-black-goat-ylmo220h.ws-us03.gitpod.io/api/external", {
 					method: "POST",
 					body: JSON.stringify(url),
 					headers: { "Content-type": "application/json;" }
@@ -53,7 +48,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			getUser: user => {
-				fetch("https://3001-azure-sawfish-tde5s0ls.ws-us03.gitpod.io/api/user", {
+				fetch("https://3001-black-goat-ylmo220h.ws-us03.gitpod.io/api/user", {
 					method: "GET",
 					body: JSON.stringify(user),
 					headers: { "Content-type": "application/json;" }
@@ -68,7 +63,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			//Register action begins
 			setRegister: user => {
-				fetch("https://3001-azure-sawfish-tde5s0ls.ws-us03.gitpod.io/api/register", {
+				fetch("https://3001-black-goat-ylmo220h.ws-us03.gitpod.io/api/register", {
 					method: "POST",
 					body: JSON.stringify(user),
 					headers: { "Content-type": "application/json;" }
@@ -82,7 +77,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			setUpdate: user => {
-				fetch("https://3001-azure-sawfish-tde5s0ls.ws-us03.gitpod.io/user/id", {
+				fetch("https://3001-black-goat-ylmo220h.ws-us03.gitpod.io/user/id", {
 					method: "PUT",
 					body: JSON.stringify(user),
 					headers: { "Content-type": "application/json;" }
@@ -97,7 +92,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			//Login Accition begins
 			setLogin: user => {
-				fetch("https://3001-azure-sawfish-tde5s0ls.ws-us03.gitpod.io/login", {
+				fetch("https://3001-black-goat-ylmo220h.ws-us03.gitpod.io/api/login", {
 					method: "POST",
 					body: JSON.stringify(user),
 					headers: { "Content-type": "application/json;" }
@@ -106,7 +101,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => {
 						console.log("Login data comes with these:", data);
 						setStore({ user: data });
-						setLogged();
+						setStore({ logged: true });
 
 						if (typeof Storage !== "undefined") {
 							localStorage.setItem("token", data.token);
@@ -119,7 +114,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			getMessage: () => {
-				fetch("https://3001-azure-sawfish-tde5s0ls.ws-us03.gitpod.io/api/hello")
+				fetch("https://3001-black-goat-ylmo220h.ws-us03.gitpod.io/api/hello")
 					.then(resp => resp.json())
 					.then(data => setStore({ message: data.message }))
 					.catch(error => console.log("Error loading message from backend", error));

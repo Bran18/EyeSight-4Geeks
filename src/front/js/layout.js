@@ -38,6 +38,7 @@ const Layout = () => {
 						<Route exact path="/userProfile">
 							<UserProfile />
 						</Route>
+						<Footer />
 					</Switch>
 				</ScrollToTop>
 			</BrowserRouter>

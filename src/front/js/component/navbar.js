@@ -8,7 +8,6 @@ export const Navbar = () => {
 	const { store, actions } = useContext(Context);
 
 	const Logout = () => {
-		localStorage.removeItem("user");
 		actions.setLogout();
 	};
 
@@ -65,7 +64,7 @@ export const Navbar = () => {
 					<Link to="/login">
 						<span className="dropdown-item"> Login </span>
 					</Link>
-					<button onClick={() => logout()} className="dropdown-item" href="#">
+					<button onClick={() => Logout()} className="dropdown-item" href="#">
 						Logout
 					</button>
 				</div>
