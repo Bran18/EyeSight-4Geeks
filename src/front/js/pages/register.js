@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 
 const Register = () => {
 	const { store, actions } = useContext(Context);
@@ -88,6 +88,13 @@ const Register = () => {
 				<button type="submit" className="btn btn-primary mb-4">
 					Submit
 				</button>
+				<div className="form-group text-center text-font-base">
+					<p className="m-0 text-white">
+						Already registered?
+						<br />
+						<Link to="/Login">login here</Link>
+					</p>
+				</div>
 			</form>
 			<br />
 		</div>

@@ -37,20 +37,27 @@ def handle_hello():
 @api.route('/external', methods=["POST"])
 def set_url():
     user_url= request.json["url"]
-    results= request_call_integration(user_url)
-    data_es = translate_results('es', results)
+    user_lan = request.json["language"]
+    results= request_call_integration(user_url, user_lan)
+    trans_lan = request.json["transLan"]
+    data_es = translate_results(trans_lan, results)
     data = [{'en':results,'es':data_es}]
     return jsonify(data),200
 
-# adding new tested routes
+
 
 #get all the users
 @api.route('/user', methods=["GET"])
-def get_user ():
+def get_user():
     users = User.query.all()
     result = [user.serialize() for user in User.query.all()]
     return jsonify(result),200
 
+#getting one record by the id
+@api.route('/user/<id>', methods=["GET"])
+def get_users(id):
+    user = User.query.get(id)
+    return jsonify({"user": user.serialize()}), 401
 
 #set login route
 @api.route('/login', methods=['POST','GET'])
@@ -85,10 +92,10 @@ def set_login():
   
     return jsonify(data), 200
 
-@api.route('/logout')
-@jwt_required
-def logout():
-    db.session.delete(current_user)  # In order for this to work, I will have to ADD AND COMMIT A USER AS WELL, OTHERWISE GIVES ERROR
+@api.route('/logout/<id>')
+@jwt_required()
+def logout(id):
+    db.session.delete(id)  # In order for this to work, I will have to ADD AND COMMIT A USER AS WELL, OTHERWISE GIVES ERROR
     db.session.commit()
     logout_user()
     return redirect('/')
@@ -112,7 +119,7 @@ def set_register():
         return "Username required", 401 
     if not password:
         return "Password required", 401
-    print("Lastname value:",firstname)
+    
     user = User()
     user.firstname=firstname
     user.lastname=lastname
@@ -131,9 +138,45 @@ def set_register():
 
     response = {
     "msg": "Added successfully",
-    "username": username}
+    "username": username,
+    "is_Active":is_Active}
 
     return jsonify(response), 200
+    
+
+@api.route('/user/<id>', methods=['PUT'])
+def update_User(id):
+  user = User.query.get(id)
+
+  username = request.json.get("username")
+  firstname = request.json.get("firstname")
+  lastname = request.json.get("lastname")
+  email = request.json.get("email")
+  password = request.json.get("password")
+  
+  user = User()
+  user.username = username
+  user.firstname = firstname
+  user.lastname = lastname
+  user.email = email
+  user.password = password
+  
+  db.session.add(user)
+  db.session.commit()
+
+  data = {
+    "user": users.serialize(),
+  }
+  return jsonify(data), 200
+
+#Delete user route
+@api.route('/user/<id>', methods=['DELETE'])
+def delete_user(id):
+  user = User.query.get(id)
+  db.session.delete(user)
+  db.session.commit()
+
+  return jsonify({"msg": "User deleted"}), 200
 
 #Forgot password
 @api.route('/forgotPassword/<string:id>', methods=["GET"])
@@ -175,12 +218,6 @@ def ForgotPassword (id):
         print('mail sended')
     else:
         return jsonify({"msg": "Invalidad email"}),411
-
-#Delete route
-@api.route('/user/<id>', methods=['DELETE'])
-def delete_User(id):
-  db.delete_one({'_id': ObjectId(id)})
-  return jsonify({'message': 'User Deleted'})
 
 
     

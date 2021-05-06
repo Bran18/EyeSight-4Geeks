@@ -22,7 +22,7 @@ const Login = () => {
 
 	return (
 		<div className="row w-100 d-flex justify-content-center">
-			{store.user.token !== null ? (
+			{store.logged ? (
 				<Redirect to="/recognitionAi" />
 			) : (
 				<div className="text-center mx-auto mt-5">
@@ -49,6 +49,10 @@ const Login = () => {
 								placeholder="password"
 							/>
 						</div>
+
+						<p className="text-left">
+							If you forget your password click on <Link to="/ForgotPassword">restore my password</Link>{" "}
+						</p>
 						<button type="submit" onClick={e => handlerClick(e)} className="btn btn-primary  mr-3 mb-3">
 							Submit
 						</button>

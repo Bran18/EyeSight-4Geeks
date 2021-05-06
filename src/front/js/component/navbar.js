@@ -6,7 +6,8 @@ import eyeSihtLogo from "../../img/EyeSight-4Geeks.png";
 
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
-	const logout = () => {
+
+	const Logout = () => {
 		actions.setLogout();
 	};
 
@@ -63,7 +64,7 @@ export const Navbar = () => {
 					<Link to="/login">
 						<span className="dropdown-item"> Login </span>
 					</Link>
-					<button onClick={() => logout()} className="dropdown-item" href="#">
+					<button onClick={() => Logout()} className="dropdown-item" href="#">
 						Logout
 					</button>
 				</div>

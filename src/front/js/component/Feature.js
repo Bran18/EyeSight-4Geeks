@@ -25,7 +25,7 @@ const Feature = () => {
 			<div className="row featurette">
 				<div className="col-md-7 order-md-2">
 					<h2 className="featurette-heading">
-						Learn to think. <span className="text-muted">in a new way.</span>
+						Learn to think. <span className="text-muted">In a new way.</span>
 					</h2>
 					<p className="lead">
 						When the mental image of a study item is triggered by a picture instead of a verbal description
