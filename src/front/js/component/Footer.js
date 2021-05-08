@@ -20,7 +20,7 @@ const Footer = () => (
 					</div>
 					<div className="row">
 						<div className="col-sm">
-							<a href="#" className="footer-logo">
+							<a href="/" className="footer-logo">
 								EyeSight
 							</a>
 							<p className="copyright">
@@ -31,7 +31,7 @@ const Footer = () => (
 							<h3>Company</h3>
 							<ul className="list-unstyled links">
 								<li>
-									<a href="#">About us</a>
+									<a href="/AboutUs">About us</a>
 								</li>
 							</ul>
 						</div>
