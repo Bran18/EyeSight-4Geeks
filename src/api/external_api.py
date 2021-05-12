@@ -5,7 +5,7 @@ from clarifai_grpc.grpc.api import service_pb2, resources_pb2
 from clarifai_grpc.grpc.api.status import status_code_pb2
 
 # This is how you authenticate.
-metadata = (('authorization', 'Key c36890cd5bde4304b87edbf5af88aead'),)
+metadata = (('authorization', 'Key d6bab7da03ef4fffb9155d70f37b5d5d'),)
 
 #Api Clarify
 def request_call_integration(user_url, user_lan):

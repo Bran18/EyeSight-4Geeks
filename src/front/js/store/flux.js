@@ -12,12 +12,31 @@ const getState = ({ getStore, getActions, setStore }) => {
 			registered: false,
 			logged: false,
 			apiResults: [],
-			googleResults: []
+			googleResults: [],
+			url: []
 		},
 
 		actions: {
 			setLogout: () => {
 				setStore({ logged: false }), localStorage.removeItem("token");
+			},
+
+			setUrl2: url => {
+				setStore(url);
+			},
+
+			getUrl: () => {
+				fetch("https://loremflickr.com/json/g/320/240/paris,girl/all", {
+					method: "GET",
+					body: JSON.stringify(),
+					headers: { "Content-type": "application/json;" }
+				})
+					.then(res => res.json())
+					.then(data => {
+						console.log("IMAGE", data);
+						// setStore({ user: data }, { registered: true });
+					})
+					.catch(err => console.log(err));
 			},
 
 			getToken: () => {
@@ -48,7 +67,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			getUser: user => {
-				fetch("https://3001-black-goat-ylmo220h.ws-us03.gitpod.io/api/user", {
+				fetch(process.env.BACKEND_URL + "/api/user", {
 					method: "GET",
 					body: JSON.stringify(user),
 					headers: { "Content-type": "application/json;" }
@@ -63,7 +82,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			//Register action begins
 			setRegister: user => {
-				fetch("https://3001-black-goat-ylmo220h.ws-us03.gitpod.io/api/register", {
+				fetch(process.env.BACKEND_URL + "/api/register", {
 					method: "POST",
 					body: JSON.stringify(user),
 					headers: { "Content-type": "application/json;" }
@@ -77,7 +96,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			setUpdate: user => {
-				fetch("https://3001-black-goat-ylmo220h.ws-us03.gitpod.io/user/id", {
+				fetch(process.env.BACKEND_URL + "/user/id", {
 					method: "PUT",
 					body: JSON.stringify(user),
 					headers: { "Content-type": "application/json;" }
@@ -92,7 +111,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			//Login Accition begins
 			setLogin: user => {
-				fetch("https://3001-black-goat-ylmo220h.ws-us03.gitpod.io/api/login", {
+				fetch(process.env.BACKEND_URL + "/api/login", {
 					method: "POST",
 					body: JSON.stringify(user),
 					headers: { "Content-type": "application/json;" }
@@ -114,7 +133,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			getMessage: () => {
-				fetch("https://3001-black-goat-ylmo220h.ws-us03.gitpod.io/api/hello")
+				fetch(process.env.BACKEND_URL + "/api/hello")
 					.then(resp => resp.json())
 					.then(data => setStore({ message: data.message }))
 					.catch(error => console.log("Error loading message from backend", error));
