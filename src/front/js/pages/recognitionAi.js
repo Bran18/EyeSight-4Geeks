@@ -73,16 +73,10 @@ const RecognitionAi = () => {
 								/>
 							</div>
 						</form>
-						<button onClick={e => handlerClick(e)} type="button" className="btn btn-primary btn-lg mr-3">
-							Fetch
-						</button>
-						<button onClick={e => handlerClickRandom(e)} type="button" className="btn btn-primary btn-lg">
-							Random Image
-						</button>
 						<div className="row row-cols-6">
 							<div className="col">
 								<div className="form-group">
-									<label className="exampleFormControlSelect1">Language 1</label>
+									<label className="exampleFormControlSelect1">Your Language</label>
 									<select
 										className="form-control"
 										id="exampleFormControlSelect1"
@@ -98,7 +92,7 @@ const RecognitionAi = () => {
 							</div>
 							<div className="col">
 								<div className="form-group">
-									<label className="exampleFormControlSelect1">Language 2</label>
+									<label className="exampleFormControlSelect1">Translation</label>
 									<select
 										className="form-control"
 										id="exampleFormControlSelect1"
@@ -113,6 +107,18 @@ const RecognitionAi = () => {
 								</div>
 							</div>
 						</div>
+						<button
+							onClick={e => handlerClick(e)}
+							type="button"
+							className="btn btn-primary btn-lg mr-3 mb-3">
+							Send
+						</button>
+						<button
+							onClick={e => handlerClickRandom(e)}
+							type="button"
+							className="btn btn-success btn-lg mb-3">
+							Random Image
+						</button>
 					</div>
 
 					<div className="container recongnition_section">

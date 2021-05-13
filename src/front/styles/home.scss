@@ -50,9 +50,7 @@
 }
 
 .hero-container {
- //  background: url('../img/CoverHero.png') center center/cover no-repeat;
-   //background-color: #D4DDDD;
-
+// background: url('../img/CoverHero.png') center center/cover no-repeat;
 height: 100vh;
   width: 100%;
   display: flex;
@@ -93,6 +91,11 @@ height: 100vh;
 
 .home__demo__title{
     font-family: 'Quicksand', sans-serif;
+}
+
+.home__demo__subtitle{
+    font-family: 'Quicksand', sans-serif;
+     color: #333333;
 }
 
 .vision_section {
@@ -140,7 +143,7 @@ height: 100vh;
 }
 .img-thumbnail:hover{
     transform: scale(1.1);
-    border: 3px solid #7D1FC9; 
+    border: none; 
     border-radius: 50px 0 50px;
 }
 .home__demo__title{
@@ -150,6 +153,37 @@ height: 100vh;
     color: #333333;
     font-size: 2.5rem;
 }
+
+
+.about {
+    
+
+    .brand{
+        font-family: 'Quicksand', sans-serif;
+        color:#7D1FC9;
+        font-size: 50px;
+    }
+
+    p{
+        padding-top: 20px;
+        font-family: 'Quicksand', sans-serif;
+        font-size: 20px;
+    }
+
+}
+
+.ourteam{
+     font-family: 'Quicksand', sans-serif;
+
+     h2{
+         color:#7D1FC9;
+        font-size: 50px;
+     }
+        
+}
+
+
+
 
 /*==================================================
                     RESPONSIVE CSS

@@ -5,8 +5,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				username: "",
 				email: "",
 				userId: "",
-				userName: "",
-				userUrl: "",
+				firstname: "",
+				lastname: "",
 				token: ""
 			},
 			registered: false,
@@ -137,6 +137,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(resp => resp.json())
 					.then(data => setStore({ message: data.message }))
 					.catch(error => console.log("Error loading message from backend", error));
+			},
+
+			async ForgotPassword(email) {
+				let url = process.env.BACKEND_URL + "/api/ForgotPassword/";
+				var requestOptions = {
+					method: "GET",
+					redirect: "follow"
+				};
+
+				return await fetch(url + email, requestOptions)
+					.then(res => {
+						return res.json();
+					})
+					.then(result => {
+						return result;
+					})
+					.catch(error => console.log("error:", error));
 			}
 		}
 	};

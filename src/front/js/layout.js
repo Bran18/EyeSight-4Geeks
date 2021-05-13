@@ -9,7 +9,7 @@ import RecognitionAi from "./pages/recognitionAi";
 import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
 import Footer from "./component/Footer";
-import UserProfile from "./pages/userProfile";
+import ForgotPassword from "./pages/forgotPassword";
 import AboutUs from "./pages/AboutUs";
 //create your first component
 const Layout = () => {
@@ -35,8 +35,8 @@ const Layout = () => {
 						<Route exact path="/recognitionAi">
 							<RecognitionAi />
 						</Route>
-						<Route exact path="/userProfile">
-							<UserProfile />
+						<Route exact path="/ForgotPassword">
+							<ForgotPassword />
 						</Route>
 						<Route exact path="/AboutUs">
 							<AboutUs />
