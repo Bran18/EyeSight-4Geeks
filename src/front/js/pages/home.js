@@ -13,6 +13,5 @@ export const Home = () => (
 		<Feature />
 		<VisionSection />
 		<HomeDemo />
-		<CardSection />
 	</div>
 );

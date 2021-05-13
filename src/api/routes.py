@@ -144,7 +144,7 @@ def set_register():
     return jsonify(response), 200
     
 
-@api.route('/user/<id>', methods=['PUT'])
+@api.route('/user/<id>', methods=['POST'])
 def update_User(id):
   user = User.query.get(id)
 
@@ -183,7 +183,8 @@ def delete_user(id):
 def ForgotPassword (id):
     regex = '^(\w|\.|\_|\-)+[@](\w|\_|\-|\.)+[.]\w{2,3}$'
     if(re.search(regex, id)):
-        user = User.query.filter_by(email=id, is_Active=True).first()
+        user = User.query.filter_by(email=id).first()
+       
 
         if user is None:
             return jsonify({"msg": "User not found"}),404
@@ -194,7 +195,7 @@ def ForgotPassword (id):
         db.session.commit()
         #Codigo Enviar correo
         
-        mail_content = 'Hello, We want to let you know that you have sucessfully create a new password. Your new password is: ' + password
+        mail_content = 'Hello, We want to let you know that you have sucessfully create a new password. Your new esight password is: ' + password
 
         #The mail addresses and password
         sender_address = 'esight4geeks@gmail.com'
