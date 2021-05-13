@@ -1,12 +1,3 @@
 {
-  "type": "service_account",
-  "project_id": "eyesight-313102",
-  "private_key_id": "fec1614f369317c1984694d48d9c40296480a647",
-  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDEspSrCuM9DTHY\nb5A9c6XwR1/CkBPOvTdGtxpus31qRtZQpqkFyvjL7MKgfdOl+MzK4D70nC1/6d3p\nyDkDMGIODdhgyVvUtpHedgyonWLIbES2w+1dADnnBDGc0F0LxwFfQEuC23c5ljjS\n2SREybgnvvYjpEXGzA1qsK755yg0YBJNiIlBfRBVxcMsaZ3g0gobTmP6H+ZVwB+U\n32z5DNIq87iWNbNDWC14a2/5/U0v6wdHjXjuObU4ZoMb67syGjSK9h+hNiu9w4ST\neixbztzAgYMa+bzYdT2JrFThzmOwNv2WC4zyMBcS0CYDPKx8K137AzBdjglecXCf\nYccDmGyPAgMBAAECggEAAbG6FxkSaQG2lrMrTmQzHzU2LXJZQVQe6ESGfUKdh29R\nxEMTPKIJb5Q7/u7mhkz00qCI2kmIGMx2ZV+cohrmFVHoNbk2SchCzGQ+6qrkYW6R\nTvO0FTN9zDAcj0m6K3JM4DmpDNkAF2ZkWeiV5+PG6sy5yQfOtA4o5WzdLPjhP0Y6\nrDe7NFigYd1VZhd2le+MqVdIIJxcG9xqZbNqi53Qf8bbU8V88AV473Jj5fdWuUjz\nVX7hDMCeKsrHcCRxl5fE7GvVRzAEB0OYiD6NXnkdYi/RDKJrKUyUFvOTzIAk9Ib9\nlHhhlwh10aHm54yN6V/WYt2IOPmmxK9NitcUOV04jQKBgQD/XbMdgaj3u+Cp7zhI\ndWKtDW7G3j8H6G7Yab5kDNih5vWJwarws4x75xSJhW7P3FXEXjSAUh0Qjgf1gHzI\nAwgquC7+KAMZVgASolMVhYGN75E/kN2Lz6/vaxyCxjf+O7o2hjSbytZrYLexqoq/\ntuqwiGBylxQVLVeTIPA0ARe+WwKBgQDFL5gB0n+kSGTdo0rgPG/F3LHTH70ra/In\nJN1aFYkqyEDM0P9w7XvlwbdWwueEEqdY7j1Jf+s/k333iOTA1DTzSe5+qHT1QSjk\n+fUnJs4qoFLK7lkNkAgFF67/pig3WNk+H4C//Ozl7aFk8yFG0oSVjBGU9QRjJYEo\n78Nm0cbI3QKBgC9ctorDcI4590otRxgRRXLpKeGSeMhDsMNMoXY297rXdjTNiaHI\n+0ZDrohvCgVdTT71ZfFiyWc3oHxFD1+dSFd7/6M90o1RaQQLvTMhpsynYR4UBTMY\nGv5htFEA6IOrmjbgn0NB1JDnyEoYYlF6YH7LXHAEW0IuPa7ZDhPnG/s/AoGAWmqn\ndfZyxv7XGXY96DJuQjkfZSLBmD6ILADQavVDD1YBuKkA6GRNEp5QFj2K8VmoWLPt\ncF1ynpVgBnhEBFOJ8CDvdi6Cas81FEG1cv1tPciEDj9aoEhyFPu2J82l1TMtcjn5\nzI8KhagAAI0nrhTr7LLsgPQUze2tmvrOC8CXORUCgYBvko1paSg2X4mjeSXAWYVN\ndKsugArztPcGjs9G2/KVf0mB7RP6O2luwYlNK/k+ugmyEfSpyF1hp77e+ioi9PhX\nrpZTeQ0Cg5V8wTxsx+cYKSRL0DjiD93t9o35uL9Y1rZDM01jlp+lKArypMMjLtBL\nHgbPI+s7uYb34gzlfVJDAg==\n-----END PRIVATE KEY-----\n",
-  "client_email": "eyesight@eyesight-313102.iam.gserviceaccount.com",
-  "client_id": "100601720801052807162",
-  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-  "token_uri": "https://oauth2.googleapis.com/token",
-  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/eyesight%40eyesight-313102.iam.gserviceaccount.com"
+  
 }
