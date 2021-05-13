@@ -1,13 +1,16 @@
 .navbar{
     font-family: 'Quicksand', sans-serif;
-    background-color: #ffffff !important;
+    background-color: #272727 !important;
+}
+
+html{
+    background-color: #272727 !important;
 }
 
 .nav-logo{
     width: 85px;
     
 }
-
 
 
 /*==================================================
@@ -71,7 +74,7 @@ height: 100vh;
 
 .hero-container >  p {
   margin-top: 8px;
-  color: rgb(97, 96, 96);
+  color: rgb(226, 226, 226);
   font-size: 32px;
   font-family: 'Quicksand', sans-serif;
 }
@@ -96,7 +99,7 @@ height: 100vh;
 
 .home__demo__subtitle{
     font-family: 'Quicksand', sans-serif;
-     color: #333333;
+     color: #d6d6d6;
 }
 
 .vision_section {
@@ -110,7 +113,8 @@ height: 100vh;
 }
 
 .vision_section .card-deck{
-    color: #1b1b1b;
+    color: #d3d3d3;
+      background-color: #272727 !important;
     
 }
 
@@ -154,6 +158,7 @@ height: 100vh;
 .img-thumbnail{
     transition: all 0.5s ease-in-out;
     border: none;
+      background-color: #272727 !important;
     
 }
 .img-thumbnail:hover{
@@ -167,7 +172,7 @@ height: 100vh;
     font-weight: 500;
     line-height: 1;
     letter-spacing: -.05rem;
-    color: #333333;
+    color: #e4e4e4;
     font-size: 2.5rem;
 }
 

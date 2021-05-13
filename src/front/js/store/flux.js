@@ -144,8 +144,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => console.log("Error loading message from backend", error));
 			},
 
-			async ForgotPassword(email) {
-				let url = process.env.BACKEND_URL + "/api/ForgotPassword/";
+			async forgotPassword(email) {
+				let url = process.env.BACKEND_URL + "/api/forgotPassword/";
 				var requestOptions = {
 					method: "GET",
 					redirect: "follow"

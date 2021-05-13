@@ -27,62 +27,67 @@ const Register = () => {
 			<h1>Register</h1>
 			<form onSubmit={handleSubmit} style={{ width: "500px", height: "425px" }}>
 				<div className="mb-3">
-					<label htmlFor="exampleInputUsername" className="form-label">
+					<label htmlFor="validationDefaultUsername" className="form-label">
 						Username
 					</label>
 					<input
 						onChange={e => setUsername(e.target.value)}
 						type="text"
 						className="form-control"
-						id="exampleUserName"
+						id="validationDefaultUsername"
 						aria-describedby="userHelp"
 						placeholder="Username"
+						required
 					/>
-					<label htmlFor="exampleInputfirtsname" className="form-label">
+					<label htmlFor="validationDefault01" className="form-label">
 						First name
 					</label>
 					<input
 						onChange={e => setfirstname(e.target.value)}
 						type="text"
 						className="form-control"
-						id="exampleInputfirtsname"
+						id="validationDefault01"
 						aria-describedby="userHelp"
 						placeholder="First name"
+						required
 					/>
-					<label htmlFor="exampleInputfirtsname" className="form-label">
+					<label htmlFor="validationDefault02" className="form-label">
 						Last Name
 					</label>
 					<input
 						onChange={e => setlastname(e.target.value)}
 						type="text"
 						className="form-control"
-						id="exampleInputlastname"
+						id="validationDefault02"
 						aria-describedby="userHelp"
 						placeholder="First name"
+						required
 					/>
-					<label htmlFor="exampleInputEmail1" className="form-label">
+					<label htmlFor="validationDefault03" className="form-label">
 						Email address
 					</label>
 					<input
 						onChange={e => setEmail(e.target.value)}
 						type="email"
 						className="form-control"
-						id="exampleInputEmail1"
+						id="validationDefault03"
 						aria-describedby="emailHelp"
+						required
 					/>
 					<div id="emailHelp" className="form-text">
 						Well never share your email with anyone else.
 					</div>
 				</div>
 				<div className="mb-3">
-					<label htmlFor="exampleInputPassword1" className="form-label">
+					<label htmlFor="validationDefault04" className="form-label">
 						Password
 					</label>
 					<input
 						onChange={e => setPassword(e.target.value)}
 						type="password"
 						className="form-control"
-						id="exampleInputPassword1"
+						id="validationDefault04"
+						required
 					/>
 				</div>
 				<button type="submit" className="btn btn-primary mb-4">
