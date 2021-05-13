@@ -108,6 +108,20 @@ height: 100vh;
     margin: 20px 0;
 }
 
+.vision_section .card-deck{
+    color: #1b1b1b;
+    
+}
+
+.vision_section .card-body{
+     
+    -webkit-box-shadow: -1px 0px 25px 9px rgba(0, 0, 0, 0.09);
+    -moz-box-shadow: -1px 0px 25px 9px rgba(0, 0, 0, 0.09);
+    box-shadow: -1px 0px 25px 9px rgba(0, 0, 0, 0.09);
+}
+
+
+
 .layout_padding2 {
     padding: 45px 0;
      padding-top: 45px;
@@ -142,6 +156,8 @@ height: 100vh;
     
 }
 .img-thumbnail:hover{
+    animation: pulse 2s infinite;
+  animation-timing-function: linear; 
     transform: scale(1.1);
     border: none; 
     border-radius: 50px 0 50px;
@@ -176,12 +192,23 @@ height: 100vh;
      font-family: 'Quicksand', sans-serif;
 
      h2{
-         color:#7D1FC9;
+         color:rgb(42, 42, 43);
         font-size: 50px;
      }
         
 }
 
+.img-aboutus{
+     transition: all 0.5s ease-in-out;
+    border: none;
+}
+
+.img-aboutus:hover{
+
+    transform: scale(1.1);
+    border: 3px solid #7D1FC9; 
+    border-radius: 50px 0 50px;
+}
 
 
 

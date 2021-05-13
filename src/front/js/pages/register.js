@@ -88,13 +88,9 @@ const Register = () => {
 				<button type="submit" className="btn btn-primary mb-4">
 					Submit
 				</button>
-				<div className="form-group text-center text-font-base">
-					<p className="m-0 text-white">
-						Already registered?
-						<br />
-						<Link to="/Login">login here</Link>
-					</p>
-				</div>
+				<Link to="/login" className="btn btn-outline-success ml-3 mb-4">
+					login!
+				</Link>
 			</form>
 			<br />
 		</div>

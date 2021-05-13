@@ -13,12 +13,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 			logged: false,
 			apiResults: [],
 			googleResults: [],
-			url: []
+			url: [],
+			favorite: []
 		},
 
 		actions: {
 			setLogout: () => {
 				setStore({ logged: false }), localStorage.removeItem("token");
+			},
+
+			changeFavorite: element => {
+				setStore({ favorite: element });
 			},
 
 			setUrl2: url => {
