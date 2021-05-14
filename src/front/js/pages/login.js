@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Link, Redirect } from "react-router-dom";
 import { Context } from "../store/appContext";
+import { Redirect, Link } from "react-router-dom";
+import ScrollAnimation from "react-animate-on-scroll";
 
 const Login = () => {
 	const { store, actions } = useContext(Context);

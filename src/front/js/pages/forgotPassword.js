@@ -1,16 +1,24 @@
-import React, { useState } from "react";
-import { message } from "antd";
+import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { Redirect, Link } from "react-router-dom";
+import { message } from "antd";
 import ScrollAnimation from "react-animate-on-scroll";
 
 const ForgotPassword = () => {
-	const [InputEmail, setEmail] = useState("");
+	const { store, actions } = useContext(Context);
+	const [email, setEmail] = useState("");
 	const [SuccessMsg, setSuccessMsg] = useState(false);
 
+	/*const handleSubmit = e => {
+		e.preventDefault();
+		console.log("the email is", email);
+		actions.forgotPassword(email);
+		setSuccessMsg(true);
+    };*/
+
 	const handleSubmit = event => {
-		console.log(InputEmail);
-		actions.ForgotPassword(InputEmail).then(res => {
+		console.log(email);
+		actions.forgotPassword(email).then(res => {
 			if (res.StatusID) {
 				message.error({
 					content: res.msg,
@@ -24,24 +32,25 @@ const ForgotPassword = () => {
 		});
 		event.preventDefault();
 	};
+
 	if (SuccessMsg) {
 		return (
 			<ScrollAnimation animateIn="fadeIn" duration="2" animateOnce="true">
-				<section id="F1" className="container my-5 p-3">
+				<section className="container my-5 p-3">
 					<div className="text-center">
-						<h2 className="mt-2 text-font-base text-white">Password recovery</h2>
+						<h2 className="mt-2 text-font-base text-dark">Password Recovery</h2>
 					</div>
-					<div id="F2" className="card-contact card border-5 border-white mw-100 mx-auto">
-						<div id="F3" className="card-contact card mw-100 mx-auto">
+					<div className="card-contact card border-5 border-white mw-100 mx-auto" id="passwordGood">
+						<div className="card-contact card mw-100 mx-auto">
 							<article className="card-body mx-auto py-5">
-								<h3 className="text-center text-font-base text-white font-weight-light mt-3">
+								<h3 className="text-center text-font-base text-dark font-weight-light mt-3">
 									Your new password is ready and have been sent to your email!!!
 								</h3>
 								<br />
 								<div className="form-group text-center">
 									<p className="m-0">
 										<Link to="/Login" className="text-center text-font-base text-primary-color">
-											Login
+											<i className="fas fa-sign-in-alt" />
 										</Link>
 									</p>
 								</div>
@@ -56,7 +65,7 @@ const ForgotPassword = () => {
 			<ScrollAnimation animateIn="fadeIn" duration="2" animateOnce="true">
 				<section className="container my-5 p-3">
 					<div className="text-center">
-						<h2 className="mt-2 text-font-base text-white">Password recovery</h2>
+						<h2 className="mt-2 text-font-base text-dark">Password Recovery</h2>
 					</div>
 					<div className="card-contact card border-5 border-white mw-100 mx-auto">
 						<div className="card-contact card mw-100 mx-auto">
@@ -71,7 +80,7 @@ const ForgotPassword = () => {
 										<input
 											type="email"
 											id="Email"
-											value={InputEmail}
+											value={email}
 											onChange={e => setEmail(e.target.value)}
 											placeholder="Correo"
 											className="form-control"

@@ -38,7 +38,7 @@ const AboutUs = () => {
 									<img
 										src="https://avatars.githubusercontent.com/u/31634868?v=4"
 										style={{ width: "150px", height: "150px" }}
-										className="rounded-circle mx-auto d-block img-thumbnail"
+										className="rounded-circle mx-auto d-block img-aboutus"
 										alt="Thumbnail image"
 									/>
 								</div>
@@ -52,7 +52,7 @@ const AboutUs = () => {
 									<img
 										src="https://avatars.githubusercontent.com/u/42480874?v=4"
 										style={{ width: "150px", height: "150px" }}
-										className="rounded-circle mx-auto d-block img-thumbnail"
+										className="rounded-circle mx-auto d-block img-aboutus"
 										alt="Thumbnail image"
 									/>
 								</div>
@@ -66,7 +66,7 @@ const AboutUs = () => {
 									<img
 										src="https://avatars.githubusercontent.com/u/59536240?v=4"
 										style={{ width: "150px", height: "150px" }}
-										className="rounded-circle mx-auto d-block img-thumbnail"
+										className="rounded-circle mx-auto d-block img-aboutus"
 										alt="Thumbnail image"
 									/>
 								</div>
@@ -80,7 +80,7 @@ const AboutUs = () => {
 									<img
 										src="https://avatars.githubusercontent.com/u/77852471?v=4"
 										style={{ width: "150px", height: "150px" }}
-										className="rounded-circle mx-auto d-block img-thumbnail"
+										className="rounded-circle mx-auto d-block img-aboutus"
 										alt="Thumbnail image"
 									/>
 								</div>
