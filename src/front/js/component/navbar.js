@@ -6,7 +6,6 @@ import eyeSihtLogo from "../../img/EyeSight-4Geeks.png";
 
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
-	const Currentuser = JSON.parse(localStorage.getItem("user"));
 
 	const Logout = () => {
 		actions.setLogout();
@@ -35,6 +34,11 @@ export const Navbar = () => {
 						<li className="nav-item active">
 							<Link to="/">
 								<span className="nav-link">Home</span>
+							</Link>
+						</li>
+						<li className="nav-item">
+							<Link to="/pricing">
+								<span className="nav-link">Pricing</span>
 							</Link>
 						</li>
 						<li className="nav-item">
@@ -93,6 +97,11 @@ export const Navbar = () => {
 						<li className="nav-item">
 							<Link to="/recognitionAi">
 								<span className="nav-link">Recognition Ai</span>
+							</Link>
+						</li>
+						<li className="nav-item">
+							<Link to="/pricing">
+								<span className="nav-link">Pricing</span>
 							</Link>
 						</li>
 						<li className="nav-item">

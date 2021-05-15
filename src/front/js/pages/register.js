@@ -7,12 +7,12 @@ const Register = () => {
 	const [firstname, setfirstname] = useState("");
 	const [lastname, setlastname] = useState("");
 	const [username, setUsername] = useState("");
+	const [registered, setRegistered] = useState("false");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 
 	const handleSubmit = e => {
 		e.preventDefault();
-
 		actions.setRegister({
 			firstname: firstname,
 			lastname: lastname,
@@ -20,12 +20,14 @@ const Register = () => {
 			username: username,
 			password: password
 		});
+		e.target.reset();
+		console.log(registered);
 	};
 
 	return (
 		<div className="mx-auto pt-5 pb-4">
-			<h1>Register</h1>
-			<form onSubmit={handleSubmit} style={{ width: "500px", height: "425px" }}>
+			<h1 className="register-tittle">Register</h1>
+			<form onSubmit={handleSubmit} style={{ width: "500px", height: "425px", marginTop: "40px" }}>
 				<div className="mb-3">
 					<label htmlFor="validationDefaultUsername" className="form-label">
 						Username
@@ -90,7 +92,7 @@ const Register = () => {
 						required
 					/>
 				</div>
-				<button type="submit" className="btn btn-primary mb-4">
+				<button type="submit" className="btn btn-primary mb-4" onClick={() => setRegistered(true)}>
 					Submit
 				</button>
 				<Link to="/login" className="btn btn-outline-success ml-3 mb-4">

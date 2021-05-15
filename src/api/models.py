@@ -11,6 +11,7 @@ class User(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(200), unique=False, nullable=False)
     is_Active = db.Column(db.Boolean(), unique=False, nullable=False)
+    favoritesWord = db.relationship('FavoriteWord', backref='user')
 
     def __repr__(self):
         return '<User %r>' % self.username
@@ -23,5 +24,25 @@ class User(db.Model):
             "lastname": self.lastname,
             "email": self.email,
             "is_active": self.is_Active,
+            "favoritesWord": list(map(lambda x: x.serializebyUser(), self.favoritesWord)),
+            # do not serialize the password, its a security breach
+        }
+
+class FavoriteWord(db.Model):
+    __tablename__ = 'favoriteWord'
+    # Notice that each column is also a normal Python instance attribute.
+    id = db.Column(db.Integer, primary_key=True)
+    word = db.Column(db.String(120), unique=False, nullable=False)
+    userid = db.Column(db.Integer, db.ForeignKey('user.id'))
+    
+    def __repr__(self):
+        return '<FavoriteWord %r>' % self.userid
+
+    def serializebyUser(self):
+        return {
+            "id": self.id,
+            "word": self.word,
+            "translated": self.translated,
+
             # do not serialize the password, its a security breach
         }
