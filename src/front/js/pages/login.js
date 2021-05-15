@@ -27,9 +27,9 @@ const Login = () => {
 				<Redirect to="/recognitionAi" />
 			) : (
 				<div className="text-center mx-auto mt-5">
-					<h1>Login with your credentials</h1>
+					<h1 className="login-tittle">Login with your credentials</h1>
 
-					<form style={{ width: "500px", height: "300px" }}>
+					<form style={{ width: "500px", height: "300px", marginTop: "40px" }}>
 						<div className="mb-3">
 							<label className="form-label">Email address</label>
 							<input

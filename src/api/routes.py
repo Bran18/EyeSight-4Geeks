@@ -13,7 +13,7 @@ from email.mime.text import MIMEText
 from datetime import datetime, timedelta
 from basicauth import decode
 from werkzeug.security import generate_password_hash, check_password_hash
-from api.models import db, User
+from api.models import db, User , FavoriteWord
 from api.utils import generate_sitemap, APIException
 from functools import wraps
 from dateutil.relativedelta import relativedelta
@@ -44,7 +44,26 @@ def set_url():
     data = [{'en':results,'es':data_es}]
     return jsonify(data),200
 
+#Sending the fav word to the favorite api route
+@api.route('/favorite', methods=["GET","POST"])
+def set_favorite():
+    word = request.json.get("word",None)
+    
+    favorite = FavoriteWord()
+    favorite.word=word
+   
 
+    try: 
+        db.session.add(favorite)
+        db.session.commit()
+    except Exception as e:
+        return jsonify("msg: Something went wrong contact your DB manager"), 507
+
+    response = {
+    "msg": "Added successfully",
+    "word":word}
+
+    return jsonify(response), 200
 
 #get all the users
 @api.route('/user', methods=["GET"])

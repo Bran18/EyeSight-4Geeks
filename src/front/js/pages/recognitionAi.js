@@ -9,18 +9,14 @@ const RecognitionAi = () => {
 	const [transLan, setTransLan] = useState("es");
 	const { store, actions } = useContext(Context);
 
+	const setFavoriteTrue = element => {
+		setFavorite(element);
+		actions.setFavorite({ favorite: store.Favorite });
+	};
+
 	const handlerClickRandom = e => {
 		e.preventDefault();
 		fnUrl();
-	};
-
-	const setFavoriteTrue = () => {
-		setFavorite(true);
-		console.log("favorito es", favorite);
-	};
-	const setFavoriteFalse = () => {
-		setFavorite(false);
-		console.log("favorito es", favorite);
 	};
 
 	const handlerClick = e => {
@@ -54,6 +50,7 @@ const RecognitionAi = () => {
 	useEffect(() => {
 		actions.setUrl();
 	});
+
 	return (
 		<div>
 			<div className="ai">
@@ -155,35 +152,32 @@ const RecognitionAi = () => {
 							</div>
 							<div className="col-lg-3 mt-2 mb-2">
 								<ul className="list-group overflow-auto">
-									{store.apiResults.map(element => (
+									{store.apiResults.map(word => (
 										<li
 											className="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
-											key={element}>
-											{element}
+											key={word}>
+											{word}
+											<a
+												className="btn btn-outline-info text-info btn-sm"
+												onClick={() => actions.setFavorite({ word })}>
+												<i className="far fa-bookmark fa-spin" />
+											</a>
 										</li>
 									))}
 								</ul>
 							</div>
 							<div className="col-lg-3 mt-2 mb-2">
 								<ul className="list-group overflow-auto">
-									{store.googleResults.map(element => (
+									{store.googleResults.map(word => (
 										<li
 											className="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
-											key={element}>
-											{element}
-											{favorite ? (
-												<a
-													className="btn btn-outline-warning text-warning btn-sm"
-													onClick={() => setFavoriteFalse()}>
-													<i className="fas fa-heart" />
-												</a>
-											) : (
-												<a
-													className="btn btn-outline-warning text-warning btn-sm"
-													onClick={() => setFavoriteTrue()}>
-													<i className="far fa-heart" />
-												</a>
-											)}
+											key={word}>
+											{word}
+											<a
+												className="btn btn-outline-info text-info btn-sm"
+												onClick={() => actions.setFavorite({ word })}>
+												<i className="far fa-bookmark fa-spin" />
+											</a>
 										</li>
 									))}
 								</ul>
