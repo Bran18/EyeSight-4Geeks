@@ -20,6 +20,10 @@ flask-admin = "*"
 flask-jwt-extended = "*"
 clarifai-grpc = "*"
 basicauth = "*"
+google-cloud-translate = "==2.0.1"
+google-cloud = "*"
+freeze = "*"
+googletrans = "*"
 
 [requires]
 python_version = "3.8"

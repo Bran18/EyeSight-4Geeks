@@ -3,7 +3,7 @@ import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.scss";
 import Feature from "../component/Feature";
 import Hero from "../component/Hero";
-import CardSection from "../component/CardSection";
+import HomeDemo from "../component/HomeDemo";
 import VisionSection from "../component/VisionSection";
 
 export const Home = () => (
@@ -11,6 +11,6 @@ export const Home = () => (
 		<Hero />
 		<Feature />
 		<VisionSection />
-		<CardSection />
+		<HomeDemo />
 	</div>
 );
